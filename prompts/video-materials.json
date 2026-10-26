@@ -1,0 +1,37 @@
+{
+  "scope": "Fixed manually reviewed excerpts. Both prompt variants must receive identical records. Do not imply full-page or video access.",
+  "records": [
+    {
+      "id": "jxvFnYi28NY",
+      "title": "진짜 쓰는 Aside 활용 사례 10가지 | 그냥 해달라고 하면 됩니다 - YouTube",
+      "descriptionExcerpts": [
+        "0:37 아키플로우 MCP로 할 일 관리하기",
+        "5:40 자동화된 커뮤니케이션 (댓글 작성 및 DM 이벤트)",
+        "13:58 카카오톡 읽고 요약하기"
+      ],
+      "scope": "Selected description excerpts, not complete description. No transcript supplied."
+    },
+    {
+      "id": "H5GETOP7ivs",
+      "title": "Motion Canvas is now Open Source! - YouTube",
+      "descriptionExcerpts": [
+        "0:38 Signals",
+        "2:15 Layouts",
+        "3:00 User Interface"
+      ],
+      "productionTools": [
+        "Motion Canvas",
+        "Affinity Designer",
+        "DaVinci Resolve",
+        "Audacity"
+      ],
+      "scope": "Selected chapter and tools-used sections, not complete description. No transcript supplied."
+    },
+    {
+      "id": "gunTvElcD4E",
+      "title": "이게 49,000원 한식 다이닝…?",
+      "description": null,
+      "scope": "Page states no additional description. No transcript supplied."
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "status": "partial-page-review",
+  "reviews": [
+    {
+      "id": "lCFUxsq3a7k",
+      "url": "https://www.youtube.com/watch?v=lCFUxsq3a7k",
+      "title": "Stayin’ Alive - Bee Gees | Fingerstyle Guitar | TAB + Chords + Lyrics",
+      "channel": "Kenneth Acoustic",
+      "basis": "public-title-and-expanded-description",
+      "evidence": [
+        {
+          "field": "title",
+          "quote": "Fingerstyle Guitar",
+          "supports": "fingerstyle"
+        },
+        {
+          "field": "description",
+          "quote": "GUITAR TABS",
+          "supports": "creator-provides-tab-links"
+        },
+        {
+          "field": "description",
+          "quote": "Tuning: Standard",
+          "supports": "guitar-tuning"
+        },
+        {
+          "field": "description",
+          "quote": "Capo: Fret 1",
+          "supports": "capo-position"
+        }
+      ],
+      "linksObserved": [
+        "paidtabs.com",
+        "mymusic5.com",
+        "kennethacoustic.com"
+      ],
+      "notVerified": [
+        "Actual notation displayed in video",
+        "Contents or price of linked score",
+        "Genre beyond title and description"
+      ],
+      "screenshot": ".logs/tab-page-proof.png",
+      "extraction": "Human-readable evidence review by agent. No Gemini extraction and no merge into 120 sample dataset."
+    },
+    {
+      "id": "5HWM1Gad4O8",
+      "url": "https://www.youtube.com/watch?v=5HWM1Gad4O8",
+      "title": "Pat Metheny Every Summer Night TAB | Jazz Guitar",
+      "channel": "萩原健也 Kenya Hagihara",
+      "basis": "public-title-and-expanded-description",
+      "evidence": [
+        {
+          "field": "title",
+          "quote": "TAB | Jazz Guitar",
+          "supports": "creator-labels-tab-and-jazz"
+        },
+        {
+          "field": "description",
+          "quote": "Every Summer Nightのテーマの弾き方",
+          "supports": "theme-playing-instruction"
+        }
+      ],
+      "excludedProductionCredits": [
+        "MuseScore",
+        "iZotope Ozone 12 Advanced",
+        "Cubase Pro",
+        "VOX AC30C2"
+      ],
+      "notVerified": [
+        "Actual notation displayed in video",
+        "Downloadable score contents",
+        "TAB download link not observed in expanded description"
+      ],
+      "screenshot": ".logs/jazz-tab-page-proof.png",
+      "extraction": "Agent evidence review only; no Gemini extraction or merge into 120 samples."
+    }
+  ]
+}

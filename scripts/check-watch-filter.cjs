@@ -1,0 +1,16 @@
+const assert=require('node:assert/strict');
+const core=require('../search-core');
+const rows=[{id:'a',title:'베이스',tags:['베이스'],status:'watching'},{id:'b',title:'베이스',tags:['베이스'],status:'completed'},{id:'c',title:'베이스',tags:['베이스']}];
+const find=(query,status)=>rows.filter(v=>core.matches(v,query)&&core.inWatchStatus(v,status)).map(v=>v.id);
+assert.deepEqual(find('bass','all'),['a','b','c']);
+assert.deepEqual(find('bass','watching'),['a']);
+assert.deepEqual(find('bass','completed'),['b']);
+assert.deepEqual(find('없는검색어','completed'),[]);
+assert(!core.inWatchStatus(rows[2],'watching'));
+assert(!core.inWatchStatus(rows[2],'completed'));
+assert(!core.inWatchStatus(rows[0],'invalid'));
+assert.equal(core.watchLabel('watching'),'시청중');
+assert.equal(core.watchLabel('completed'),'완료');
+assert.equal(core.watchLabel(undefined),'');
+assert.equal(core.watchLabel('invalid'),'');
+console.log('Passed watch-state AND search, unknown status isolation and empty results on synthetic records.');

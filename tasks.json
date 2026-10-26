@@ -1,0 +1,1835 @@
+{
+  "project": "YouTube 북마크 · 학습",
+  "updatedAt": "2026-10-26",
+  "note": "상위 이슈를 펼쳐 단위 업무를 봅니다. 결론과 다음 행동을 짧게 기록하며 사용자 결정이 필요한 것만 강조합니다.",
+  "tasks": [
+    {
+      "id": "T01",
+      "topic": "추출·검색·분류",
+      "title": "북마크 표본 100개 이상 태그 추출",
+      "status": "완료",
+      "priority": "높음",
+      "detail": "120개를 Gemini에 요청해 119개 태그 생성, 1개 접근 불가. 모두 제목 기반 응답이며 내용 분석 완료가 아니다.",
+      "acceptance": "120개 ID 중복·누락 검사 통과. 결과와 근거 범위 저장.",
+      "evidence": ".logs/tag-batch-120/merged.json",
+      "owner": "claude",
+      "previousStatus": "완료",
+      "review": {
+        "example": "120개를 Gemini에 요청해 119개 태그 생성, 1개 접근 불가. 모두 제목 기반 응답이며 내용 분석 완료가 아니다.",
+        "artifacts": [
+          {
+            "path": ".logs/tag-batch-120/merged.json",
+            "label": "120개 추출 원본"
+          }
+        ]
+      },
+      "reviewHistory": [
+        {
+          "action": "검토완료 취소",
+          "at": "2026-10-26T05:44:13.959Z",
+          "previousReviewedAt": "2026-10-26T05:42:58.463Z",
+          "reason": "사용자 요청: 잘못 누름"
+        }
+      ],
+      "reviewComments": [
+        {
+          "text": "혹시 코멘트 읽히나",
+          "by": "사용자",
+          "at": "2026-10-26T05:49:01.822Z"
+        },
+        {
+          "text": "제공해주신 영상의 제목, 설명, 챕터 정보를 바탕으로 검토한 결과입니다.\n\n### 1. 잘못된 태그 (분류)\n\n*   **스택 트레이스**: 영상의 주제인 'pstack'은 기술의 이름일 뿐, 실제 프로그래밍의 'Stack Trace(호출 스택)'를 분석하는 기술적 방법론에 대한 내용이 아닙니다. 따라서 해당 태그는 용어의 혼동을 일으킬 수 있어 부적절합니다.\n*   **디버깅**: 영상은 pstack을 통한 개발 워크플로우와 하네스(Harness) 설정을 다룹니다. 물론 버그 수정 예시(11:27)가 포함되어 있으나, 이는 전체 내용을 포괄하는 디버깅 강좌가 아니므로 중심 주제를 대표하는 태그로는 적절하지 않습니다.\n\n### 2. 누락된 핵심 태그\n\n*   **에이전틱 코딩 (Agentic Coding)**: 영상 설명과 내용 전반에서 강조하는 핵심 방법론입니다. pstack은 결국 AI 에이전트의 업무 방식을 제어하는 도구로 소개되고 있습니다.\n*   **Cursor**: pstack이 Cursor의 공식 플러그인이며, 영상 내에서 해당 도구의 활용과 설정을 중심으로 설명하고 있으므로 반드시 포함되어야 할 플랫폼 태그입니다.\n*   **AI 개발 (AI Coding)**: LLM을 활용한 코딩 자동화와 그에 필요한 규칙(하네스) 구축을 다루고 있는 이 영상의 상위 범주입니다.\n\n### 3. 검토 근거 요약\n\n*   **pstack/Claude Code/SKILL.md**: 현재 태그는 영상의 기술적 실체를 잘 반영하고 있습니다. 특히 `SKILL.md`는 영상에서 강조하는 pstack의 본질(4:33)이며, `Claude Code`는 설치 및 실행 경로(6:45)로 다루어지는 핵심 도구입니다.\n*   **하네스 (Harness)**: 영상 전반에서 AI 모델의 출력을 제어하는 구조적 장치를 '하네스'로 정의(1:59)하고 있으므로 적절한 태그입니다.\n*   **제외 대상**: 광고(김플립 책 출간), 제작 크레딧(Lauren Tan), 투두앱(실습 예제)은 모두 도구의 이해를 돕기 위한 보조 수단이므로 태그로 적합하지 않습니다.",
+          "by": "사용자",
+          "at": "2026-10-26T05:54:04.971Z"
+        },
+        {
+          "text": "제공해주신 제목, 설명, 챕터 정보를 바탕으로 현재 태그를 검토한 결과입니다.\n\n### 1. 태그 검토 결과\n\n*   **적절한 태그:** Opus 5.5, Astra, 모션그래픽, 모션그래픽 튜토리얼\n*   **잘못된 태그:** 없음 (모든 태그가 영상의 핵심 주제를 반영하고 있습니다.)\n*   **누락된 핵심 태그:** **AI 빌더**, **키네틱 타이포그래피**, **ElevenLabs**\n\n### 2. 근거 및 상세 분석\n\n*   **핵심 태그 누락 이유:**\n    *   **AI 빌더:** 영상 설명에서 '1인 빌더'와 'AI 빌더'를 주요 타겟층으로 명시하며, 이들에게 이 기술이 왜 중요한지를 구체적으로 설명하고 있습니다(1:00-1:29). 이는 영상의 실용적 가치를 정의하는 핵심 키워드입니다.\n    *   **키네틱 타이포그래피:** 세 번째 테스트 사례(교육용 영상)에서 '키네틱 타이포그래피' 기법을 활용하여 UX 휴리스틱을 설명하는 제작 방식을 직접적으로 언급하고 있습니다(6:29, 9:41). 이는 영상 내에서 보여주는 주요 기술적 구현 방식입니다.\n    *   **ElevenLabs:** 영상 제작 과정에서 음악 제작 도구로 'ElevenLabs Music'을 명시하고, 커넥터 연결법까지 튜토리얼로 다루고 있습니다(15:22-16:05). 기술적 활용 측면에서 중요한 도구 정보입니다.\n\n### 3. 중심 주제와 주변 정보 구분\n\n*   **중심 주제:** Opus 5.5와 Astra의 모션그래픽 제작 능력 비교 및 실무 튜토리얼\n*   **구분 대상:**\n    *   **제작 크레딧/도구:** ElevenLabs Music(음악 제작), keyframe.gallery(레퍼런스 찾기)는 제작을 돕는 도구적 위치입니다.\n    *   **자동화 예제:** 'Flowdeck' SaaS 앱 데모 영상 및 UX 휴리스틱 교육 영상은 Opus 5.5의 능력을 검증하기 위해 사용된 실습 과제(Case study)에 해당합니다.",
+          "by": "사용자",
+          "at": "2026-10-26T05:54:55.295Z"
+        },
+        {
+          "text": "제공해주신 영상의 제목, 설명, 챕터 정보를 바탕으로 현재 사용 중인 태그의 적절성을 검토한 결과입니다.\n\n### 1. 태그 검토 결과\n\n**잘못된/불필요한 태그:**\n\n*   **Serum 2**: 이 태그는 영상의 핵심 주제라기보다 특정 도구(신디사이저)에 해당합니다. 설명란에 'Serum 2' 관련 제품 링크가 포함되어 있으나, 영상 전체를 관통하는 주제어로는 제한적입니다.\n*   **Ableton Tutorial**: 영상은 *Ableton Live* 환경에서 진행되지만, 이는 제작 도구일 뿐 영상의 본질적인 학습 콘텐츠인 '베이스 패턴 및 사운드 디자인'과는 구분되어야 합니다.\n\n**누락된 핵심 태그:**\n\n*   **음악 프로듀싱(Music Producing)**: 영상의 전체적인 맥락은 작곡 및 편곡 과정에서의 베이스 운용법을 다루고 있어 필수적인 태그입니다.\n*   **베이스 라인(Bassline)**: 17가지 베이스 패턴을 다루는 영상에서 가장 핵심이 되는 주제어입니다.\n*   **장르 키워드**: 영상 챕터(Indie Dance, Deep House, Progressive, Tech House 등)에 명시된 주요 장르들이 태그에서 누락되어 있습니다.\n\n### 2. 검토 근거\n\n*   **중심 주제와 도구의 구분**: '베이스 패턴'과 '사운드 디자인'은 영상의 핵심 교육 콘텐츠입니다. 반면 *Serum 2*와 *Ableton*은 이 콘텐츠를 구현하기 위해 사용된 '도구'이며, 광고 링크와 제작 환경 정보를 담고 있습니다.\n*   **챕터 기반 태그의 중요성**: 영상은 'Indie Dance', 'Deep House', 'Afro Tech' 등 구체적인 장르별 베이스 패턴을 다루고 있습니다. 현재 태그에는 'Afro Tech'만 포함되어 있어, 다른 장르의 시청자 유입을 위한 키워드가 부족합니다.\n*   **설명란 키워드 확인**: 설명란에는 장르별 가이드(Style Guides), 샘플 팩, 프리셋 번들 등이 강조되어 있어, 포괄적인 상위 개념인 '음악 프로듀싱' 태그가 검색 최적화에 더 효과적입니다.",
+          "by": "사용자",
+          "at": "2026-10-26T05:55:33.520Z"
+        },
+        {
+          "by": "claude",
+          "at": "2026-10-26T06:16:57.767Z",
+          "responseKey": "review-redesign-1",
+          "text": "120개 표본 확보는 검토완료했습니다. 태그 품질 의견 3건은 T26의 개선 사례로 남깁니다.\n이 이슈는 다시 승인하지 않아도 됩니다. 아래 3건의 의견 처리만 확인해 주세요."
+        }
+      ],
+      "reviewedAt": "2026-10-26T06:04:39.249Z",
+      "reviewedBy": "사용자",
+      "reviewPacket": {
+        "summary": "120개 표본 확보는 검토완료했습니다. 태그 품질 의견 3건은 T26의 개선 사례로 남깁니다.",
+        "question": "이 이슈는 다시 승인하지 않아도 됩니다. 아래 3건의 의견 처리만 확인해 주세요.",
+        "remaining": [
+          "추가·삭제 제안은 아직 추출 규칙에 자동 반영하지 않았습니다.",
+          "내장 Gemini가 붙인 모든 태그를 정답으로 간주하지 않습니다."
+        ],
+        "steps": [
+          "사용자님이 붙여주신 Gemini 답변 3건을 읽었습니다.",
+          "명백한 용어 오인과 검색 취향에 따른 제안을 구분했습니다.",
+          "추출 성능 개선은 상시 업무 T26에서 이어갑니다."
+        ],
+        "rows": [
+          {
+            "target": "pstack",
+            "url": "https://www.youtube.com/watch?v=u2oDdU6z4Bw",
+            "before": "스택 트레이스·디버깅",
+            "after": "현재 조회본은 pstack·Claude Code·SKILL.md·하네스",
+            "reason": "용어 오인은 이미 보정했습니다. Cursor·에이전틱 코딩 추가는 후보이며 아직 반영하지 않았습니다."
+          },
+          {
+            "target": "Opus 모션그래픽",
+            "url": "https://www.youtube.com/watch?v=O0NR110DmLk",
+            "before": "Opus 5.5·Astra·모션그래픽·모션그래픽 튜토리얼",
+            "after": "현재 태그 유지. ElevenLabs·키네틱 타이포그래피는 추가 검토 후보",
+            "reason": "붙여주신 답변은 ElevenLabs를 핵심 태그와 보조 제작 도구 양쪽으로 설명합니다. 실제로 배우는 기능인지 더 확인해야 합니다."
+          },
+          {
+            "target": "17가지 베이스 패턴",
+            "url": "https://www.youtube.com/watch?v=0gKJ3pgIqI0",
+            "before": "Serum 2·Ableton Tutorial 삭제 제안, 음악 프로듀싱 추가 제안",
+            "after": "자동 삭제·추가하지 않음",
+            "reason": "사용자님은 Ableton으로 찾고 음악 프로듀싱 같은 넓은 단어는 선호하지 않았습니다. 도구 태그를 일괄 제외하면 기존 검색 요구와 충돌합니다."
+          }
+        ]
+      },
+      "reviewAwaitingReply": false,
+      "reviewCanComplete": true,
+      "conclusion": "120개 표본 확보 완료. 추출 품질 개선은 T26에서 이어간다.",
+      "nextAction": "자료 보존",
+      "decisionNeeded": false,
+      "decisionState": "결정됨",
+      "decisionQuestion": "",
+      "steps": [
+        {
+          "text": "120개 표본 확보 완료. 추출 품질 개선은 T26에서 이어간다.",
+          "status": "완료",
+          "owner": "claude"
+        },
+        {
+          "text": "자료 보존",
+          "status": "완료",
+          "owner": "claude"
+        }
+      ]
+    },
+    {
+      "id": "T02",
+      "topic": "추출·검색·분류",
+      "title": "태그 검색과 제목 검색 비교 시안",
+      "status": "닫힘",
+      "priority": "높음",
+      "detail": "태그만 / 태그+제목 전환, 여러 단어 AND 검색, 후보 태그 선택 구현. 120개 표본 조회 화면 확인.",
+      "acceptance": "태그 없는 제목 단어를 제목 검색으로 찾는 사례와 결과 없는 검색 확인.",
+      "evidence": ".logs/search-trial/index.html",
+      "owner": "claude",
+      "previousStatus": "완료",
+      "review": {
+        "example": "태그만 / 태그+제목 전환, 여러 단어 AND 검색, 후보 태그 선택 구현. 120개 표본 조회 화면 확인.",
+        "artifacts": [
+          {
+            "path": ".logs/phrase-suggestion-proof.png",
+            "label": "검색 후보 화면"
+          }
+        ],
+        "url": "http://127.0.0.1:8765/"
+      },
+      "reviewComments": [
+        {
+          "text": "최소 정보 제공 UI 업무 해당 하며 디자인 스킬 필요 (너무 codex 스러움)",
+          "by": "사용자",
+          "at": "2026-10-26T06:05:44.044Z"
+        },
+        {
+          "by": "claude",
+          "at": "2026-10-26T06:16:57.767Z",
+          "responseKey": "review-redesign-1",
+          "text": "디자인이 너무 개발 시안 같다는 의견을 반영해 화면 디자인 검토를 T25로 모았습니다.\n디자인 의견은 T25 시안에서 이어주세요. 여기서는 검색 기능을 다시 검토할 필요가 없습니다."
+        },
+        {
+          "text": "UI 개발을 대주제로 만들고.\n각화면을 하위로 달고\n피그마 준비",
+          "by": "사용자",
+          "at": "2026-10-26T06:40:03.126Z"
+        },
+        {
+          "text": "이 이슈는 완료가 아니고 닫힘으로",
+          "by": "사용자",
+          "at": "2026-10-26T06:41:17.184Z"
+        },
+        {
+          "by": "claude",
+          "at": "2026-10-26T07:24:30.085Z",
+          "text": "요청대로 완료가 아닌 닫힘으로 변경했습니다. UI 개발을 별도 대주제로 만들고 화면별 이슈를 하위로 연결했습니다. T02는 기존 실험 기록으로 남깁니다."
+        }
+      ],
+      "reviewPacket": {
+        "summary": "요청대로 완료가 아닌 닫힘으로 변경했습니다. UI 개발을 별도 대주제로 만들고 화면별 이슈를 하위로 연결했습니다. T02는 기존 실험 기록으로 남깁니다.",
+        "question": "디자인 의견은 T25 시안에서 이어주세요. 여기서는 검색 기능을 다시 검토할 필요가 없습니다.",
+        "remaining": [
+          "T25 Figma 초안은 확장에 아직 반영하지 않았습니다."
+        ],
+        "steps": [
+          "검색 기능과 디자인 의견을 분리했습니다.",
+          "기본 화면의 정보량·태그 모양·행 간격을 T25에서 검토합니다."
+        ],
+        "rows": [
+          {
+            "target": "최소정보 조회 디자인",
+            "url": "https://www.figma.com/design/KNnnVWd0aSaZD3PGrr7phS?node-id=39-29",
+            "before": "실험 안내·추출 근거·편집 버튼이 기본 결과에 노출",
+            "after": "제목·시청 상태·태그 중심 Figma 초안",
+            "reason": "디자인 개선 요청을 T25로 연결했습니다. 현재 초안도 최종 디자인 승인은 아닙니다."
+          }
+        ]
+      },
+      "reviewAwaitingReply": false,
+      "reviewCanComplete": true,
+      "reviewedAt": "2026-10-26T06:40:03.126Z",
+      "reviewedBy": "사용자",
+      "statusHistory": [
+        {
+          "from": "완료",
+          "to": "닫힘",
+          "by": "사용자 코멘트 반영",
+          "at": "2026-10-26T07:24:30.085Z"
+        }
+      ],
+      "conclusion": "기존 검색 실험은 닫고 UI 개발은 화면별 이슈로 관리한다.",
+      "nextAction": "추가 작업 없음",
+      "decisionNeeded": false,
+      "decisionState": "결정됨",
+      "decisionQuestion": "",
+      "steps": [
+        {
+          "text": "기존 검색 실험은 닫고 UI 개발은 화면별 이슈로 관리한다.",
+          "status": "닫힘",
+          "owner": "claude"
+        },
+        {
+          "text": "추가 작업 없음",
+          "status": "닫힘",
+          "owner": "claude"
+        }
+      ]
+    },
+    {
+      "id": "T03",
+      "topic": "추출·검색·분류",
+      "title": "설명·내용 기반 추출과 오분류 개선",
+      "status": "검토필요",
+      "priority": "높음",
+      "detail": "120개 중 설명 근거 3개·제목 근거 116개·접근 불가 1개. pstack 오분류와 광고·제작 크레딧 혼입을 보정했다. 추가로 Aside 설명의 수동 후보는 별도 조회 시험만 통과했으며 본시안에 미반영이다. 식당 영상은 설명이 없어 조리법 여부를 미확정으로 남겼다. 남은 작업은 설명 기반 자동 추출과 오분류 검증이다.",
+      "acceptance": "제목 기반과 비교해 오분류·누락 변화를 확인하고 접근 범위를 표시한다.",
+      "depends": [
+        "T01"
+      ],
+      "evidence": "scripts/check-classification.cjs · scripts/prepare-tag-requests.cjs · .logs/tag-requests/manifest.json · .logs/tag-prompt-comparison-plan.json",
+      "owner": "같이",
+      "previousStatus": "진행",
+      "review": {
+        "example": "120개 중 설명 근거 3개·제목 근거 116개·접근 불가 1개. pstack 오분류와 광고·제작 크레딧 혼입을 보정했다. 추가로 Aside 설명의 수동 후보는 별도 조회 시험만 통과했으며 본시안에 미반영이다. 식당 영상은 설명이 없어 조리법 여부를 미확정으로 남겼다. 남은 작업은 설명 기반 자동 추출과 오분류 검증이다.",
+        "artifacts": [
+          {
+            "path": ".logs/aside-retrieval-comparison.json",
+            "label": "설명 태그 비교"
+          }
+        ]
+      },
+      "reviewComments": [
+        {
+          "text": "원본 링크없음 - 검토 미완",
+          "by": "사용자",
+          "at": "2026-10-26T06:07:43.811Z"
+        },
+        {
+          "by": "claude",
+          "at": "2026-10-26T06:16:57.767Z",
+          "responseKey": "review-redesign-1",
+          "text": "원본 링크가 없어 검토하지 못하셨습니다. 이제 실제 영상과 보정 전후 태그를 직접 연결했습니다.\n아래 사례에서 보정 후 태그가 영상에 맞는지, 잘못된 단어가 남았는지 봐주세요."
+        },
+        {
+          "text": "원본링크가 보이는데 없다고 한건 다른 의미인가?",
+          "by": "사용자",
+          "at": "2026-10-26T06:43:13.383Z"
+        },
+        {
+          "text": "현재결과가 확실히 좋음",
+          "by": "사용자",
+          "at": "2026-10-26T06:45:25.409Z"
+        },
+        {
+          "by": "claude",
+          "at": "2026-10-26T07:24:30.085Z",
+          "text": "제가 쓴 링크 없음은 06:07에 남겨주신 이전 의견을 설명한 말이었습니다. 현재 화면에 링크가 없는 것처럼 적은 표현을 바로잡았습니다. 현재 결과가 확실히 좋다는 평가는 설명 기반 보정 3건의 사용자 피드백으로 기록하고, 전체 120개의 정확도로 확대하지 않겠습니다."
+        }
+      ],
+      "reviewPacket": {
+        "summary": "제가 쓴 링크 없음은 06:07에 남겨주신 이전 의견을 설명한 말이었습니다. 현재 화면에 링크가 없는 것처럼 적은 표현을 바로잡았습니다. 현재 결과가 확실히 좋다는 평가는 설명 기반 보정 3건의 사용자 피드백으로 기록하고, 전체 120개의 정확도로 확대하지 않겠습니다.",
+        "question": "현재 긍정 평가는 설명 기반 보정 사례에 한정해 기록했습니다. 다음 개선 범위는 별도 논의합니다.",
+        "remaining": [
+          "전체 120개 재추출이 끝난 것은 아닙니다.",
+          "Aside는 수동 후보 비교이며 현재 조회본에 미반영입니다."
+        ],
+        "steps": [
+          "초기 제목 기반 태그와 현재 조회 태그를 비교합니다.",
+          "설명 근거가 있는 3건과 별도 수동 후보 1건을 나눠 표시합니다.",
+          "좋은 결과를 자동 추출기로 재현하는 작업은 아직 남아 있습니다."
+        ],
+        "rows": [
+          {
+            "target": "(1) 요즘 자꾸 뜨는 pstack 어설프게 말고 제대로 파헤쳐 보기 - YouTube",
+            "url": "https://www.youtube.com/watch?v=u2oDdU6z4Bw",
+            "before": "pstack · 스택 트레이스 · 디버깅",
+            "after": "pstack · Claude Code · SKILL.md · 하네스",
+            "reason": "현재 조회 시안에 반영한 설명 기반 보정본입니다. 원본 영상을 열어 태그가 실제 주제를 대표하는지 확인해 주세요."
+          },
+          {
+            "target": "(4) 내 인생을 바꾼 17가지 베이스 패턴 (+ 사운드 디자인) - YouTube",
+            "url": "https://www.youtube.com/watch?v=0gKJ3pgIqI0",
+            "before": "베이스 패턴 · 사운드 디자인 · 베이스 라인 · 음악 프로듀싱",
+            "after": "베이스 패턴 · 사운드 디자인 · Serum 2 · Afro Tech · Ableton Tutorial",
+            "reason": "현재 조회 시안에 반영한 설명 기반 보정본입니다. 원본 영상을 열어 태그가 실제 주제를 대표하는지 확인해 주세요."
+          },
+          {
+            "target": "Making a Full Lofi House Track in Under 1 Hour! | Ableton Live Tutorial - YouTube",
+            "url": "https://www.youtube.com/watch?v=bJwF79UI-Ao",
+            "before": "로파이 하우스 · 에이블톤 라이브 · 비트메이킹 · 하우스 음악 튜토리얼",
+            "after": "로파이 하우스 · 에이블톤 라이브 튜토리얼 · 비트메이킹",
+            "reason": "현재 조회 시안에 반영한 설명 기반 보정본입니다. 원본 영상을 열어 태그가 실제 주제를 대표하는지 확인해 주세요."
+          },
+          {
+            "target": "Aside 활용 사례",
+            "url": "https://www.youtube.com/watch?v=jxvFnYi28NY",
+            "before": "Aside · Aside 활용",
+            "after": "수동 후보: Aside · MCP · 업무 자동화",
+            "reason": "설명의 MCP 할 일 관리 사례를 근거로 삼았습니다. 수동 비교만 했고 조회본에는 미반영입니다."
+          }
+        ]
+      },
+      "reviewAwaitingReply": false,
+      "reviewCanComplete": false,
+      "conclusion": "설명 기반 보정 사례는 사용자 평가가 더 좋았다. 원본과 보정본을 구분한다.",
+      "nextAction": "T26 비교 평가에 보정 사례 반영",
+      "decisionNeeded": false,
+      "decisionState": "결정됨",
+      "decisionQuestion": "",
+      "steps": [
+        {
+          "text": "설명 기반 보정 3건 및 원본 영상 비교",
+          "status": "완료",
+          "owner": "claude"
+        },
+        {
+          "text": "전체 고도화는 T26의 비교 회차로 이어가기",
+          "status": "예정",
+          "owner": "claude"
+        }
+      ]
+    },
+    {
+      "id": "T04",
+      "topic": "추출·검색·분류",
+      "title": "한영 별칭을 최초 생성하고 저장",
+      "status": "검토필요",
+      "priority": "높음",
+      "detail": "알려진 한영 별칭 검색, 사용자 태그 별칭 캐시·갱신, 여러 단어 후보 추천과 키보드 선택을 구현했다. 29묶음의 실제 표본 결과 비교와 합성 165조합 검사를 통과했다. 실제 표본에서 결과가 없는 묶음은 품질 검증에서 제외한다. 모르는 표현의 최초 번역·자동 생성은 아직 연결하지 않았다.",
+      "acceptance": "베이스와 bass 검색 결과 비교. 제목만 있는 영상도 17 베이스로 조회. 17 bass 처리 방식 검증.",
+      "evidence": "scripts/check-alias-coverage.cjs · .logs/alias-coverage-check.json",
+      "owner": "claude",
+      "previousStatus": "진행",
+      "review": {
+        "example": "알려진 한영 별칭 검색, 사용자 태그 별칭 캐시·갱신, 여러 단어 후보 추천과 키보드 선택을 구현했다. 29묶음의 실제 표본 결과 비교와 합성 165조합 검사를 통과했다. 실제 표본에서 결과가 없는 묶음은 품질 검증에서 제외한다. 모르는 표현의 최초 번역·자동 생성은 아직 연결하지 않았다.",
+        "artifacts": [
+          {
+            "path": ".logs/alias-positive-controls.json",
+            "label": "별칭 조합 검사"
+          }
+        ]
+      },
+      "reviewedAt": "2026-10-26T06:08:00.219Z",
+      "reviewedBy": "사용자",
+      "reviewPacket": {
+        "summary": "별칭 검색 구현 범위는 이미 검토완료하셨습니다. 모르는 단어를 자동 번역하는 기능은 남아 있습니다.",
+        "question": "기존 별칭 구현 검토 기록은 보존합니다. 미등록 표현 자동 생성은 남아 있으므로 범위 분리·내용 교체 여부를 논의하며 검토필요를 유지합니다.",
+        "remaining": [
+          "미등록 표현의 번역·별칭 자동 생성은 미연결입니다."
+        ],
+        "steps": [
+          "같은 영상이 한글·영문 검색어로 잡히는지 비교했습니다.",
+          "별칭을 저장하지 않은 경우도 검사했습니다."
+        ],
+        "rows": [
+          {
+            "target": "베이스 ↔ bass",
+            "url": "http://127.0.0.1:8765/?q=17%20bass",
+            "before": "베이스와 bass 표기 차이",
+            "after": "별칭으로 같은 내용 검색",
+            "reason": "검색창에 17 베이스 / 17 bass를 차례로 입력해 확인할 수 있습니다. 링크의 검색어 자동 적용은 지원하지 않습니다."
+          },
+          {
+            "target": "하네스 ↔ harness / hanness",
+            "before": "기억나는 영문 표기와 오타",
+            "after": "알려진 별칭 사전으로 연결",
+            "reason": "미등록 모든 오타를 처리한다는 뜻은 아닙니다."
+          }
+        ]
+      },
+      "reviewComments": [
+        {
+          "by": "claude",
+          "at": "2026-10-26T06:16:57.767Z",
+          "responseKey": "review-redesign-1",
+          "text": "별칭 검색 구현 범위는 이미 검토완료하셨습니다. 모르는 단어를 자동 번역하는 기능은 남아 있습니다.\n재검토는 필요 없습니다. 아래는 확인한 검색 예시입니다."
+        }
+      ],
+      "reviewAwaitingReply": false,
+      "reviewCanComplete": false,
+      "conclusion": "한영 별칭으로 같은 영상을 찾는다. 미등록 표현 처리는 개발자가 검증한다.",
+      "nextAction": "미등록 표현 처리 후보 비교",
+      "decisionNeeded": false,
+      "decisionState": "결정됨",
+      "decisionQuestion": "",
+      "steps": [
+        {
+          "text": "한영 별칭으로 같은 영상을 찾는다. 미등록 표현 처리는 개발자가 검증한다.",
+          "status": "결정됨",
+          "owner": "claude"
+        },
+        {
+          "text": "미등록 표현 처리 후보 비교",
+          "status": "검토필요",
+          "owner": "claude"
+        }
+      ]
+    },
+    {
+      "id": "T05",
+      "topic": "추출·검색·분류",
+      "title": "트리 없는 검색·필터 화면",
+      "status": "완료",
+      "priority": "높음",
+      "detail": "왼쪽 트리를 없앤다. 검색창, 미리 배치한 대분류 필터, 선택한 대분류의 하위 태그, 결과 목록으로 구성한다. 120개 로컬 시안에서 트리 없는 대분류 9개와 하위 태그 후보·AND 필터 구현 및 브라우저 검증. 확장 연동은 T14 범위. 0건 대분류도 고정 표시하도록 수정. 브라우저에서 TAB0 선택/빈결과/선택유지/초기화 확인. 사용자 선호대로 필터 위치를 유지하며 새 분류 승인 아님.",
+      "acceptance": "대분류로 하위 태그 후보를 좁히고 키워드와 AND 조회. 상태 탭 및 확장 연결은 T14에서 구현.",
+      "owner": "claude",
+      "previousStatus": "완료",
+      "review": {
+        "example": "왼쪽 트리를 없앤다. 검색창, 미리 배치한 대분류 필터, 선택한 대분류의 하위 태그, 결과 목록으로 구성한다. 120개 로컬 시안에서 트리 없는 대분류 9개와 하위 태그 후보·AND 필터 구현 및 브라우저 검증. 확장 연동은 T14 범위. 0건 대분류도 고정 표시하도록 수정. 브라우저에서 TAB0 선택/빈결과/선택유지/초기화 확인. 사용자 선호대로 필터 위치를 유지하며 새 분류 승인 아님.",
+        "artifacts": [
+          {
+            "path": ".logs/zero-category-proof.png",
+            "label": "고정 대분류 화면"
+          }
+        ],
+        "url": "http://127.0.0.1:8765/"
+      },
+      "reviewedAt": "2026-10-26T06:08:16.695Z",
+      "reviewedBy": "사용자",
+      "reviewPacket": {
+        "summary": "트리 없는 대분류 필터는 검토완료하셨습니다. 필터 동작과 분류 이름 승인은 별개입니다.",
+        "question": "이 항목은 재검토하지 않아도 됩니다.",
+        "remaining": [
+          "대분류 초안의 의미와 포함 규칙은 T06에서 검토합니다."
+        ],
+        "steps": [
+          "트리 대신 고정 대분류와 하위 태그 후보를 배치했습니다.",
+          "0건인 TAB도 위치가 사라지지 않게 유지했습니다."
+        ],
+        "rows": [
+          {
+            "target": "고정 필터",
+            "url": "http://127.0.0.1:8765/",
+            "before": "결과 수에 따라 필터가 사라질 가능성",
+            "after": "9개 대분류 위치 유지",
+            "reason": "필터 UI 확인은 끝났으며 명칭·분류 정확도는 별도입니다."
+          }
+        ]
+      },
+      "reviewComments": [
+        {
+          "by": "claude",
+          "at": "2026-10-26T06:16:57.767Z",
+          "responseKey": "review-redesign-1",
+          "text": "트리 없는 대분류 필터는 검토완료하셨습니다. 필터 동작과 분류 이름 승인은 별개입니다.\n이 항목은 재검토하지 않아도 됩니다."
+        }
+      ],
+      "reviewAwaitingReply": false,
+      "reviewCanComplete": true,
+      "conclusion": "트리 없이 대분류·하위태그와 키워드로 조회한다.",
+      "nextAction": "UI 개선은 T25에서 반영",
+      "decisionNeeded": false,
+      "decisionState": "결정됨",
+      "decisionQuestion": "",
+      "steps": [
+        {
+          "text": "트리 없이 대분류·하위태그와 키워드로 조회한다.",
+          "status": "완료",
+          "owner": "claude"
+        },
+        {
+          "text": "UI 개선은 T25에서 반영",
+          "status": "완료",
+          "owner": "claude"
+        }
+      ]
+    },
+    {
+      "id": "T06",
+      "topic": "추출·검색·분류",
+      "title": "공통 대분류·별칭 사전 초안",
+      "status": "검토필요",
+      "priority": "보통",
+      "detail": "대분류 9개·별칭 사전과 중분류 7개는 미승인 초안이다. 미분류 11건과 중복 분류 16건을 이유별로 검토했다. 별도 TAB 2개 페이지는 조회 시험을 통과했으나 영상 속 악보는 미확인이다. 다음에는 설명 근거와 분야별 분류 범위를 검토한다. 새 대분류를 자동 승격하지 않는다.",
+      "acceptance": "등록할 대표 키워드 기준과 한영 표기를 검토. 자동으로 분류 위치가 바뀌지 않음.",
+      "evidence": "classification-draft.json · .logs/unclassified-review.json · .logs/multiple-category-review.json · .logs/motion-description-review.json",
+      "owner": "같이",
+      "previousStatus": "진행",
+      "review": {
+        "example": "대분류 9개·별칭 사전과 중분류 7개는 미승인 초안이다. 미분류 11건과 중복 분류 16건을 이유별로 검토했다. 별도 TAB 2개 페이지는 조회 시험을 통과했으나 영상 속 악보는 미확인이다. 다음에는 설명 근거와 분야별 분류 범위를 검토한다. 새 대분류를 자동 승격하지 않는다.",
+        "artifacts": [
+          {
+            "path": ".logs/unclassified-review.json",
+            "label": "미분류 검토 사례"
+          }
+        ]
+      },
+      "reviewComments": [
+        {
+          "text": "검토대상 웹 초안이 공통이라 난감하다. 이런경우 초안 작성의 대해 결과와 프로세스를 보여줘야 하는거 아닌가?",
+          "by": "사용자",
+          "at": "2026-10-26T06:11:04.330Z"
+        },
+        {
+          "by": "claude",
+          "at": "2026-10-26T06:16:57.767Z",
+          "responseKey": "review-redesign-1",
+          "text": "대분류 초안의 결과와 만든 과정을 보여달라는 의견이 맞습니다. 현재는 Jev가 만든 분류가 아니라 수동 키워드 사전으로 배정한 초안입니다.\n분류 이름·포함 단어가 예상과 다른 사례만 알려주세요. 모르는 분야까지 승인하실 필요는 없습니다."
+        },
+        {
+          "text": "지칭할수 있게 번호를 달라",
+          "by": "사용자",
+          "at": "2026-10-26T06:47:12.600Z"
+        },
+        {
+          "by": "claude",
+          "at": "2026-10-26T07:24:30.085Z",
+          "text": "실제 결과 행에 T06-01처럼 번호를 달았습니다. 이후 T06-03의 포함 단어가 넓다처럼 말씀하시면 그 항목을 기준으로 답하겠습니다."
+        }
+      ],
+      "reviewPacket": {
+        "summary": "실제 결과 행에 T06-01처럼 번호를 달았습니다. 이후 T06-03의 포함 단어가 넓다처럼 말씀하시면 그 항목을 기준으로 답하겠습니다.",
+        "question": "분류 이름·포함 단어가 예상과 다른 사례만 알려주세요. 모르는 분야까지 승인하실 필요는 없습니다.",
+        "remaining": [
+          "9개 대분류와 7개 중분류는 미승인 초안입니다.",
+          "키워드 포함으로 배정한 결과이며 모델의 의미 판단 정확도가 아닙니다."
+        ],
+        "steps": [
+          "검색에 사용할 대표 분류 9개를 수동 초안으로 정했습니다.",
+          "각 분류에 포함할 단어와 알려진 한영 별칭을 적었습니다.",
+          "영상 태그가 해당 단어와 맞으면 그 분류에 표시합니다. 하나의 영상이 여러 곳에 나올 수 있습니다.",
+          "120개에 적용하니 미분류 11개·복수 분류 16개가 나왔습니다.",
+          "근거가 부족한 사례는 자동으로 새 분류를 만들지 않고 검토 대상으로 남겼습니다."
+        ],
+        "rows": [
+          {
+            "target": "TAB",
+            "before": "포함 단어: TAB · 타브악보",
+            "after": "현재 0개 배정",
+            "reason": "120개 표본에는 해당 사례가 없습니다. 실제 TAB 페이지 2건은 별도 시험했습니다.",
+            "ref": "T06-01"
+          },
+          {
+            "target": "작곡",
+            "before": "포함 단어: 작곡 · 편곡 · 비트메이킹 · 샘플링 · 멜로디 · 코드 진행 · 음악 프로듀싱 · 에이블톤 · 로직프로 · FL 스튜디오 · FL Studio · DAW",
+            "after": "현재 22개 배정",
+            "reason": "사례: (4) 내 인생을 바꾼 17가지 베이스 패턴 (+ 사운드 디자인) - YouTube",
+            "url": "https://www.youtube.com/watch?v=0gKJ3pgIqI0",
+            "ref": "T06-02"
+          },
+          {
+            "target": "사운드디자인",
+            "before": "포함 단어: 사운드 디자인 · 신디 · 오디오 플러그인 · 채널 스트립",
+            "after": "현재 2개 배정",
+            "reason": "사례: (4) 내 인생을 바꾼 17가지 베이스 패턴 (+ 사운드 디자인) - YouTube",
+            "url": "https://www.youtube.com/watch?v=0gKJ3pgIqI0",
+            "ref": "T06-03"
+          },
+          {
+            "target": "음악이론",
+            "before": "포함 단어: 음악이론 · 경과화음 · 청음 · 화음 · 선법 · 하모니 · 곡 구조",
+            "after": "현재 10개 배정",
+            "reason": "사례: Exercises to Hear (Almost) Every Chord - 1 Hour of Ear Training - YouTube",
+            "url": "https://www.youtube.com/watch?v=YA-TXGYxOSw",
+            "ref": "T06-04"
+          },
+          {
+            "target": "AI 활용",
+            "before": "포함 단어: AI · 인공지능 · 딥러닝 · 머신러닝 · Deep Learning · Machine Learning · GPT · DeepSeek · 클로드 · Claude · MCP · 에이전트 스킬 · 클로드 스킬 · SKILL.md · taste skill · pstack · Jev · 하네스 · LLM · RAG · GraphRAG · Gemini · 노트북LM · 챗GPT",
+            "after": "현재 49개 배정",
+            "reason": "사례: (1) 요즘 자꾸 뜨는 pstack 어설프게 말고 제대로 파헤쳐 보기 - YouTube",
+            "url": "https://www.youtube.com/watch?v=u2oDdU6z4Bw",
+            "ref": "T06-05"
+          },
+          {
+            "target": "프로그래밍",
+            "before": "포함 단어: 개발 · 코딩 · HTML · CSS · 리액트 · useState · 도커 · TypeScript · Next.js · CLI · MSA · 트랜잭션",
+            "after": "현재 19개 배정",
+            "reason": "사례: 클로드 코드와 함께하는 최고의 웹사이트 구축 7단계 - YouTube",
+            "url": "https://www.youtube.com/watch?v=1PXFAFMgdns",
+            "ref": "T06-06"
+          },
+          {
+            "target": "디자인",
+            "before": "포함 단어: 피그마 · 웹디자인 · 웹 디자인 · 모션그래픽 · 디자이너 · 프로토타이핑 · UIUX",
+            "after": "현재 11개 배정",
+            "reason": "사례: (5) Opus 5.5로 미친 수준의 모션그래픽 만들기 (보너스: Astra와 능력 비교 + 튜토리얼 전격 공개) - YouTube",
+            "url": "https://www.youtube.com/watch?v=O0NR110DmLk",
+            "ref": "T06-07"
+          },
+          {
+            "target": "요리",
+            "before": "포함 단어: 요리 · 레시피 · 카레 · 소스 만들기 · 토마토 소스 · 크림 소스 · sauce · 고기 · 샌드위치 · 쇼가야키 · 해동",
+            "after": "현재 7개 배정",
+            "reason": "사례: (4) 이게 49,000원 한식 다이닝…? - YouTube",
+            "url": "https://www.youtube.com/watch?v=gunTvElcD4E",
+            "ref": "T06-08"
+          },
+          {
+            "target": "맛집",
+            "before": "포함 단어: 맛집 · 뷔페 · 카페 · 다이닝 · 식품 리뷰",
+            "after": "현재 6개 배정",
+            "reason": "사례: (4) 이게 49,000원 한식 다이닝…? - YouTube",
+            "url": "https://www.youtube.com/watch?v=gunTvElcD4E",
+            "ref": "T06-09"
+          },
+          {
+            "target": "발견된 경계 사례",
+            "url": "https://www.youtube.com/watch?v=gunTvElcD4E",
+            "before": "가성비 코스요리 태그",
+            "after": "요리와 맛집 양쪽에 배정",
+            "reason": "코스요리 안의 요리라는 단어가 잡힌 결과입니다. 조리법 제공 여부는 설명이 없어 미확정입니다.",
+            "ref": "T06-10"
+          }
+        ]
+      },
+      "reviewAwaitingReply": false,
+      "reviewCanComplete": false,
+      "conclusion": "공통 대분류는 안정적으로 관리하고 개인 중분류는 분리한다.",
+      "nextAction": "분류 사전의 실제 오분류 사례 검증",
+      "decisionNeeded": false,
+      "decisionState": "결정됨",
+      "decisionQuestion": "",
+      "steps": [
+        {
+          "text": "9개 대분류 키워드와 실제 배정 결과 확인",
+          "status": "검토필요",
+          "owner": "claude"
+        },
+        {
+          "text": "미분류 11건·복수 분류 16건의 경계 검증",
+          "status": "예정",
+          "owner": "claude"
+        }
+      ]
+    },
+    {
+      "id": "T07",
+      "topic": "추출·검색·분류",
+      "title": "분류 사전 서버 관리 범위 검토",
+      "status": "검토필요",
+      "priority": "보통",
+      "detail": "공통 대분류/별칭만 명시적으로 골라 내보내는 로컬 도구 구현. 개인 북마크·시청 기록·검토 사례·개인 중분류는 포함하지 않음. 추가 개인 필드 배제·원본 불변·ID 중복 검사 통과. 서버 업로드/배포와 사전 승인은 미완료.",
+      "acceptance": "공통 자료와 개인 자료의 저장 경계 확정.",
+      "depends": [
+        "T06"
+      ],
+      "evidence": "scripts/export-common-taxonomy.cjs · .logs/common-taxonomy-draft.json",
+      "owner": "claude",
+      "previousStatus": "진행",
+      "review": {
+        "example": "공통 대분류/별칭만 명시적으로 골라 내보내는 로컬 도구 구현. 개인 북마크·시청 기록·검토 사례·개인 중분류는 포함하지 않음. 추가 개인 필드 배제·원본 불변·ID 중복 검사 통과. 서버 업로드/배포와 사전 승인은 미완료.",
+        "artifacts": [
+          {
+            "path": ".logs/common-taxonomy-draft.json",
+            "label": "공통 사전 출력 초안"
+          }
+        ]
+      },
+      "reviewPacket": {
+        "summary": "공통 사전은 현재 로컬 출력 초안부터 사용하고 필요할 때 확장하는 방향으로 이해했습니다. 유사도 검색은 표현이 다른 영상을 찾는 기능이고, 관심분야 지도는 분야 관계를 둘러보는 탐색 UI라 목적이 다릅니다. 두 아이디어를 자동으로 사전 서버 범위에 넣지 않고 여기서 따로 논의하겠습니다. 외부 서버 배포는 아직 하지 않습니다.",
+        "question": "유사도 검색은 기억나는 표현으로 영상을 찾는 쪽, 관심분야 지도는 새 분야를 둘러보는 쪽입니다. 어느 경험부터 시험할지 다음에 논의하겠습니다.",
+        "remaining": [
+          "실제 서버·동기화·공개 배포는 구현하지 않았습니다.",
+          "이 검토는 서버 공개 승인이 아닙니다."
+        ],
+        "steps": [
+          "초안에서 대분류 ID·이름·포함 단어와 별칭 묶음만 선택합니다.",
+          "개인 자료나 추가 필드는 제외합니다.",
+          "결과를 로컬 파일로 저장하며 업로드하지 않습니다."
+        ],
+        "rows": [
+          {
+            "target": "대분류",
+            "before": "ID·이름·포함 단어",
+            "after": "공통 출력에 포함",
+            "reason": "예: 사운드디자인 → 사운드 디자인, 신디, 오디오 플러그인"
+          },
+          {
+            "target": "한영 별칭",
+            "before": "베이스 ↔ bass / 하네스 ↔ harness",
+            "after": "공통 출력에 포함",
+            "reason": "현재 사람이 정한 사전입니다. 미승인 초안으로 표시됩니다."
+          },
+          {
+            "target": "영상·북마크·시청 기록",
+            "before": "개인 제목·URL·태그·시청 위치",
+            "after": "공통 출력에서 제외",
+            "reason": "영상별 사용자 자료는 이 도구가 내보내지 않습니다."
+          },
+          {
+            "target": "개인 중분류·취향·검토 의견",
+            "before": "개인 정리 방식과 코멘트",
+            "after": "공통 출력에서 제외",
+            "reason": "사용자의 정리 방식과 의견을 공통 사전에 넣지 않습니다."
+          }
+        ]
+      },
+      "reviewComments": [
+        {
+          "by": "claude",
+          "at": "2026-10-26T06:16:57.767Z",
+          "responseKey": "review-redesign-1",
+          "text": "현재 구현은 서버가 아니라, 공통 사전만 골라 내보내는 로컬 도구입니다. 무엇이 나가고 남는지를 아래 표로 보여드립니다.\n공통으로 내보내는 자료에 개인 정보가 섞이지 않는지 아래 포함/제외 표를 확인해 주세요."
+        },
+        {
+          "text": "일단 만들고 필요하면 추가\n그리고 유사도 검색이 필요하지 않을까?\n또한 음악장르지도처럼 관심분야 지도가 있음 좋을 듯 한데",
+          "by": "사용자",
+          "at": "2026-10-26T06:49:20.894Z"
+        },
+        {
+          "by": "claude",
+          "at": "2026-10-26T07:24:30.085Z",
+          "text": "공통 사전은 현재 로컬 출력 초안부터 사용하고 필요할 때 확장하는 방향으로 이해했습니다. 유사도 검색은 표현이 다른 영상을 찾는 기능이고, 관심분야 지도는 분야 관계를 둘러보는 탐색 UI라 목적이 다릅니다. 두 아이디어를 자동으로 사전 서버 범위에 넣지 않고 여기서 따로 논의하겠습니다. 외부 서버 배포는 아직 하지 않습니다."
+        }
+      ],
+      "reviewAwaitingReply": false,
+      "reviewCanComplete": false,
+      "conclusion": "공통 사전부터 만들고 필요한 항목을 추가한다. 개인 자료는 공유하지 않는다.",
+      "nextAction": "공통 사전 로컬 제공 경로 검증",
+      "decisionNeeded": false,
+      "decisionState": "결정됨",
+      "decisionQuestion": "",
+      "steps": [
+        {
+          "text": "공통 대분류·별칭만 선택해 로컬 파일 출력",
+          "status": "검토필요",
+          "owner": "claude"
+        },
+        {
+          "text": "서버 제공·배포는 구현 범위를 확정한 뒤 진행",
+          "status": "예정",
+          "owner": "claude"
+        }
+      ]
+    },
+    {
+      "id": "T08",
+      "topic": "추출·검색·분류",
+      "title": "Jev 실행 방식 확인과 중분류 개인화 시험",
+      "status": "검토필요",
+      "priority": "보통",
+      "detail": "공식 Quick start에서 SDK도 API 키와 호스팅 API를 사용함을 확인. 오프라인 모델 실행 방법은 확인하지 못했으므로 로컬 추론을 가정하지 않는다. 개인 후보·결과의 로컬 저장과 추론 위치는 구분한다. Choice는 미리 제공한 후보를 선택하므로 새 중분류·번역 생성은 별도다. 실제 호출·성능·비용 검증은 미완료.",
+      "acceptance": "로컬 실행 가능 여부와 입력·출력 확인. 표본 태그로 분류 결과 비교.",
+      "depends": [
+        "T06"
+      ],
+      "evidence": "JEV-REVIEW.md",
+      "owner": "같이",
+      "previousStatus": "진행",
+      "review": {
+        "example": "공식 Quick start에서 SDK도 API 키와 호스팅 API를 사용함을 확인. 오프라인 모델 실행 방법은 확인하지 못했으므로 로컬 추론을 가정하지 않는다. 개인 후보·결과의 로컬 저장과 추론 위치는 구분한다. Choice는 미리 제공한 후보를 선택하므로 새 중분류·번역 생성은 별도다. 실제 호출·성능·비용 검증은 미완료.",
+        "artifacts": [
+          {
+            "path": "JEV-REVIEW.md",
+            "label": "Jev 적용 사례와 제안"
+          }
+        ]
+      },
+      "reviewCanComplete": false,
+      "reviewComments": [
+        {
+          "text": "내의견 이전에 jev 적용사례를 검색후 미리 고민 바람",
+          "by": "사용자",
+          "at": "2026-10-26T06:52:03.645Z"
+        },
+        {
+          "by": "claude",
+          "at": "2026-10-26T07:24:30.085Z",
+          "text": "의견을 묻기 전에 TypeSafe 공식 적용 사례를 조사했습니다. ① 확신이 낮은 세부 분류는 상위 분류로 되돌리는 분류 사례 ② 키워드 검색 후보를 Jev로 재정렬하는 검색 사례가 있습니다. 제안은 먼저 7개 중분류 후보에 적합/부적합/근거부족을 판단하는 작은 비교입니다. 분류와 검색 재정렬을 동시에 넣지 않고, 한국어·영문 및 여러 분야 사례에서 오분류를 봐야 합니다. API 실행은 하지 않았습니다."
+        }
+      ],
+      "reviewAwaitingReply": false,
+      "reviewPacket": {
+        "summary": "의견을 묻기 전에 TypeSafe 공식 적용 사례를 조사했습니다. ① 확신이 낮은 세부 분류는 상위 분류로 되돌리는 분류 사례 ② 키워드 검색 후보를 Jev로 재정렬하는 검색 사례가 있습니다. 제안은 먼저 7개 중분류 후보에 적합/부적합/근거부족을 판단하는 작은 비교입니다. 분류와 검색 재정렬을 동시에 넣지 않고, 한국어·영문 및 여러 분야 사례에서 오분류를 봐야 합니다. API 실행은 하지 않았습니다.",
+        "question": "추천 순서는 중분류 판단을 먼저 시험하고, 검색 재정렬은 나중에 별도 비교하는 것입니다. 조사 결과를 보고 이 순서를 논의하겠습니다.",
+        "rows": [
+          {
+            "target": "공식 사례: 확신 기반 분류",
+            "url": "https://docs.typesafe.ai/cookbooks/classification_using_confidence",
+            "before": "정해진 여러 분류 중 하나를 선택",
+            "after": "세부 분류가 불확실하면 더 넓은 분류로 돌아감",
+            "reason": "우리 제안: 중분류에 억지 배정하지 않고 미분류/근거부족을 남김. 예제 수치를 우리 정확도로 적용하지 않음."
+          },
+          {
+            "target": "공식 사례: 검색 재정렬",
+            "url": "https://docs.typesafe.ai/cookbooks/rerank_typesafe",
+            "before": "빠른 검색으로 후보를 먼저 줄임",
+            "after": "질의와 후보의 관련도를 판단해 순서 변경",
+            "reason": "우리 제안: 별칭 검색으로 못 찾는 문제와 후보 순위 문제를 나눠 검토. 아직 API 호출 안 함."
+          }
+        ],
+        "remaining": [],
+        "steps": []
+      },
+      "conclusion": "Jev는 정해진 분류 후보를 판단하는 용도로 검증한다.",
+      "nextAction": "공식 사례를 기준으로 중분류 비교 설계",
+      "decisionNeeded": false,
+      "decisionState": "결정됨",
+      "decisionQuestion": "",
+      "steps": [
+        {
+          "text": "공식 분류·검색 재정렬 적용 사례 조사",
+          "status": "완료",
+          "owner": "claude"
+        },
+        {
+          "text": "개인 중분류 후보 판단 실험 설계 · API 미실행",
+          "status": "예정",
+          "owner": "claude"
+        }
+      ]
+    },
+    {
+      "id": "T09",
+      "topic": "UI 개발",
+      "title": "YouTube 제목 옆 태그 생성·편집",
+      "status": "검토필요",
+      "priority": "높음",
+      "detail": "태그 버튼을 누르면 추천 태그를 생성하고 삭제·수동 추가한다. 개인 취향 태그는 내용 태그와 구분한다. 단순 재생으로 등록하지 않는다. 검색 시안에 태그 편집창 구현. 제거한 자동 태그와 사용자 태그를 따로 브라우저에 저장하며 새로고침 복원·삭제 복원 검증. YouTube 제목 옆 버튼과 Gemini 생성·등록 연동은 남음. 자동 재생성 태그가 사용자 태그와 겹칠 때 중복 칩 제거. 정규화가 같은 표기는 사용자 표기·개인 별칭·사용자 소속을 유지. 원본 자동 자료는 보존하며 복원/검색 검사 통과. 제거 태그의 띄어쓰기 재생성 후 편집창 복원 표시가 검색 상태와 다르던 문제 수정. 실제 편집기 렌더/복원 클릭을 모의 DOM에서 검증. 브라우저 과거자료 주입 검수와 구분. 저장 실패 안내가 편집창 재열기 후에도 유지되도록 수정하고 실패 시 다시 저장 버튼 제공. 모의 저장소 오류→재열기→재시도 성공 검사 통과. 실제 브라우저 용량 초과 재현은 하지 않음.",
+      "acceptance": "태그 생성 성공 시에만 등록. 실패 시 미등록. 편집 자동 저장.",
+      "evidence": "prototypes/tag-editor.js · scripts/check-editor-restore.cjs · .logs/editor-input-isolation-proof.png",
+      "owner": "claude",
+      "previousStatus": "진행",
+      "review": {
+        "example": "태그 버튼을 누르면 추천 태그를 생성하고 삭제·수동 추가한다. 개인 취향 태그는 내용 태그와 구분한다. 단순 재생으로 등록하지 않는다. 검색 시안에 태그 편집창 구현. 제거한 자동 태그와 사용자 태그를 따로 브라우저에 저장하며 새로고침 복원·삭제 복원 검증. YouTube 제목 옆 버튼과 Gemini 생성·등록 연동은 남음. 자동 재생성 태그가 사용자 태그와 겹칠 때 중복 칩 제거. 정규화가 같은 표기는 사용자 표기·개인 별칭·사용자 소속을 유지. 원본 자동 자료는 보존하며 복원/검색 검사 통과. 제거 태그의 띄어쓰기 재생성 후 편집창 복원 표시가 검색 상태와 다르던 문제 수정. 실제 편집기 렌더/복원 클릭을 모의 DOM에서 검증. 브라우저 과거자료 주입 검수와 구분. 저장 실패 안내가 편집창 재열기 후에도 유지되도록 수정하고 실패 시 다시 저장 버튼 제공. 모의 저장소 오류→재열기→재시도 성공 검사 통과. 실제 브라우저 용량 초과 재현은 하지 않음.",
+        "artifacts": [
+          {
+            "path": ".logs/editor-input-isolation-proof.png",
+            "label": "태그 편집 화면"
+          }
+        ],
+        "url": "http://127.0.0.1:8765/"
+      },
+      "reviewCanComplete": false,
+      "reviewComments": [
+        {
+          "text": "UI 이슈임",
+          "by": "사용자",
+          "at": "2026-10-26T06:52:30.388Z"
+        },
+        {
+          "by": "claude",
+          "at": "2026-10-26T07:24:30.085Z",
+          "text": "UI 개발 대주제의 영상 제목 옆 태그 생성·편집 화면으로 옮겼습니다. 생성 전/생성 중/성공 후 편집/실패 화면을 Figma에서 준비하는 범위이며, 추출 품질 자체는 T26에서 다룹니다."
+        }
+      ],
+      "reviewAwaitingReply": false,
+      "reviewPacket": {
+        "summary": "UI 개발 대주제의 영상 제목 옆 태그 생성·편집 화면으로 옮겼습니다. 생성 전/생성 중/성공 후 편집/실패 화면을 Figma에서 준비하는 범위이며, 추출 품질 자체는 T26에서 다룹니다.",
+        "question": "다음 변경은 아래 이슈별 쟁점을 논의한 뒤 결정하겠습니다.",
+        "rows": [],
+        "remaining": [],
+        "steps": []
+      },
+      "parentId": "T28",
+      "conclusion": "제목 옆 태그 버튼으로 생성하고 추가·삭제 편집한다.",
+      "nextAction": "Figma의 생성·편집 상태 정리",
+      "decisionNeeded": false,
+      "decisionState": "결정됨",
+      "decisionQuestion": "",
+      "steps": [
+        {
+          "text": "제목 옆 태그 버튼과 생성 전·생성 중·실패 상태 시안",
+          "status": "예정",
+          "owner": "claude"
+        },
+        {
+          "text": "추천 태그 삭제·직접 추가와 자동 등록 연결",
+          "status": "예정",
+          "owner": "claude"
+        }
+      ]
+    },
+    {
+      "id": "T10",
+      "topic": "UI 개발",
+      "title": "Figma 수정안 정리와 제목 앞 완료 표시",
+      "status": "예정",
+      "priority": "보통",
+      "detail": "사용자가 고친 간결한 칩 배치를 기준으로 한다. 시청완료 표시는 제목 앞으로 이동해 태그 영역을 분리하는 방향. 실제 UI 반영 여부 재확인.",
+      "acceptance": "제목·완료 상태·태그의 역할이 구분되는 시안 확인.",
+      "owner": "같이",
+      "reviewCanComplete": false,
+      "parentId": "T25",
+      "conclusion": "시청 상태는 제목 앞에 두고 태그 줄은 태그만 표시한다.",
+      "nextAction": "조회 디자인 T25에 반영",
+      "decisionNeeded": false,
+      "decisionState": "결정됨",
+      "decisionQuestion": "",
+      "kind": "step",
+      "steps": [
+        {
+          "text": "시청 상태는 제목 앞에 두고 태그 줄은 태그만 표시한다.",
+          "status": "결정됨",
+          "owner": "같이"
+        },
+        {
+          "text": "조회 디자인 T25에 반영",
+          "status": "예정",
+          "owner": "같이"
+        }
+      ]
+    },
+    {
+      "id": "T11",
+      "topic": "북마크·시청 기록",
+      "title": "Chrome 북마크 저장 형식과 중복 처리",
+      "status": "검토필요",
+      "priority": "높음",
+      "detail": "URL 형식·재생성 시 개인 자료 보존·대상 폴더 중복 계획·입력 검증·변경된 계획 판별 구현. 모의 API 검사 통과. 실제 Chrome 읽기/쓰기·폴더 연결·동시 쓰기 처리는 미구현.",
+      "acceptance": "한 영상 중복 등록 방지, 기존 북마크 비파괴, 저장·복원 왕복 확인.",
+      "depends": [
+        "T09"
+      ],
+      "evidence": "BOOKMARK-FORMAT.md · .logs/bookmark-url-trial.json",
+      "owner": "claude",
+      "previousStatus": "진행",
+      "review": {
+        "example": "URL 형식·재생성 시 개인 자료 보존·대상 폴더 중복 계획·입력 검증·변경된 계획 판별 구현. 모의 API 검사 통과. 실제 Chrome 읽기/쓰기·폴더 연결·동시 쓰기 처리는 미구현.",
+        "artifacts": [
+          {
+            "path": ".logs/local-checks.json",
+            "label": "로컬 검사 결과"
+          }
+        ]
+      },
+      "reviewCanComplete": false,
+      "reviewComments": [
+        {
+          "text": "태그버튼 누르고 자동추출되면 이미 특정폴더에 저장, URL에 덧붙인 스트링을 빼면 중복체크하여 이전것을 대체",
+          "by": "사용자",
+          "at": "2026-10-26T06:54:13.080Z"
+        },
+        {
+          "by": "claude",
+          "at": "2026-10-26T07:24:30.085Z",
+          "text": "태그 버튼으로 추출 성공하면 지정 폴더에 자동 저장하고, 같은 원본 영상의 기존 항목이 있으면 추가하지 않고 갱신한다는 뜻으로 이해했습니다. 비교할 때 태그·시청 위치 같은 부가 문자열을 제외하고 영상 ID를 기준으로 합니다. 지정 폴더 밖 북마크는 건드리지 않습니다. 실제 북마크 쓰기는 아직 구현하지 않았습니다."
+        },
+        {
+          "by": "claude",
+          "at": "2026-10-26T07:43:24.870Z",
+          "text": "태그 추출 성공 시 지정 폴더에 자동 저장한다. 같은 영상 ID의 기존 항목은 수동 태그와 시청 정보를 보존하며 갱신한다. 불필요하게 사용자 판단을 요청한 이전 질문은 철회합니다."
+        }
+      ],
+      "reviewAwaitingReply": false,
+      "reviewPacket": {
+        "summary": "태그 추출 성공 시 지정 폴더에 자동 저장한다. 같은 영상 ID의 기존 항목은 수동 태그와 시청 정보를 보존하며 갱신한다.",
+        "question": "결정된 동작입니다. 구현·검증은 claude가 진행합니다.",
+        "rows": [],
+        "remaining": [],
+        "steps": []
+      },
+      "conclusion": "태그 추출 성공 시 지정 폴더에 자동 저장하고 같은 영상은 갱신한다.",
+      "decisionNeeded": false,
+      "decisionQuestion": "",
+      "nextAction": "기존 태그·상태 보존하는 저장 연결 구현",
+      "decisionState": "결정됨",
+      "steps": [
+        {
+          "text": "영상 ID 기준 중복 갱신과 URL 저장 형식 모듈 검사",
+          "status": "검토필요",
+          "owner": "claude"
+        },
+        {
+          "text": "지정 폴더 자동 저장 연결 · 기존 수동 태그·시청 상태 보존",
+          "status": "예정",
+          "owner": "claude"
+        }
+      ]
+    },
+    {
+      "id": "T12",
+      "topic": "북마크·시청 기록",
+      "title": "시청중·자동 완료·수동 완료 구현",
+      "status": "검토필요",
+      "priority": "높음",
+      "detail": "로컬 함수에서 등록 후 시청중·95% 새 경계 통과·수동 전환·복원 검증. 실제 플레이어 미연결. 처음 95% 이상에서 등록하는 경우의 동작은 잠정 제한으로 남음.",
+      "acceptance": "95% 경계와 수동 전환, 새로고침 후 상태 복원.",
+      "depends": [
+        "T11"
+      ],
+      "evidence": "WATCH-PROGRESS.md · scripts/check-watch-progress.cjs",
+      "owner": "claude",
+      "previousStatus": "진행",
+      "review": {
+        "example": "로컬 함수에서 등록 후 시청중·95% 새 경계 통과·수동 전환·복원 검증. 실제 플레이어 미연결. 처음 95% 이상에서 등록하는 경우의 동작은 잠정 제한으로 남음.",
+        "artifacts": [
+          {
+            "path": ".logs/watch-fixture-proof.png",
+            "label": "가상 시청 상태 화면"
+          }
+        ]
+      },
+      "reviewCanComplete": false,
+      "reviewComments": [
+        {
+          "text": "구현방식토의 진행하면 됨",
+          "by": "사용자",
+          "at": "2026-10-26T07:16:20.956Z"
+        },
+        {
+          "by": "claude",
+          "at": "2026-10-26T07:24:30.085Z",
+          "text": "구현 방식 토의를 시작할 자료로 현재 합의와 남은 선택을 정리했습니다. 태그 추출 성공으로 등록, 등록 후 시청중, 완료 수동 지정은 유지합니다. 95% 자동완료는 위치 기준 편의 규칙이며 전체 시청 보장이 아닙니다. 저장 이벤트와 플레이어 연결을 먼저 논의한 뒤 구현하겠습니다."
+        }
+      ],
+      "reviewAwaitingReply": false,
+      "reviewPacket": {
+        "summary": "구현 방식 토의를 시작할 자료로 현재 합의와 남은 선택을 정리했습니다. 태그 추출 성공으로 등록, 등록 후 시청중, 완료 수동 지정은 유지합니다. 95% 자동완료는 위치 기준 편의 규칙이며 전체 시청 보장이 아닙니다. 저장 이벤트와 플레이어 연결을 먼저 논의한 뒤 구현하겠습니다.",
+        "question": "먼저 저장할 이벤트를 논의하겠습니다. 현재 제안은 재생 중 위치 갱신, 일시정지·이동 시 마지막 저장입니다.",
+        "rows": [],
+        "remaining": [],
+        "steps": []
+      },
+      "conclusion": "등록된 영상은 시청중, 95% 자동완료와 수동완료를 지원한다.",
+      "nextAction": "플레이어 이벤트와 상태 저장 연결",
+      "decisionNeeded": false,
+      "decisionState": "결정됨",
+      "decisionQuestion": "",
+      "steps": [
+        {
+          "text": "등록·시청중·95% 완료·수동완료 상태 모듈 검사",
+          "status": "검토필요",
+          "owner": "claude"
+        },
+        {
+          "text": "YouTube 재생 이벤트와 상태 갱신 연결",
+          "status": "예정",
+          "owner": "claude"
+        }
+      ]
+    },
+    {
+      "id": "T13",
+      "topic": "북마크·시청 기록",
+      "title": "마지막 재생 위치 저장·이어보기",
+      "status": "예정",
+      "priority": "높음",
+      "detail": "재생 위치를 자동 저장하고 조회 화면에서 영상을 다시 열면 마지막 저장 위치부터 재생한다. 종료 시 누락을 줄이는 저장 이벤트와 주기는 claude가 구현·검증한다.",
+      "acceptance": "등록 영상 위치 저장 후 재진입 시 해당 위치에서 이어보기.",
+      "depends": [
+        "T11"
+      ],
+      "evidence": "WATCH-PROGRESS.md · scripts/check-watch-progress.cjs",
+      "owner": "claude",
+      "previousStatus": "진행",
+      "review": {
+        "example": "마지막 위치의 URL 저장/복원과 뒤로 이동 시 최신 위치 유지 검사 통과. 실제 플레이어 위치 수집·재진입 이어보기는 미연결.",
+        "artifacts": [
+          {
+            "path": ".logs/local-checks.json",
+            "label": "상태·위치 모듈 검사"
+          }
+        ]
+      },
+      "reviewCanComplete": false,
+      "reviewComments": [
+        {
+          "text": "닫기전 저장, 조회페이지에서 클릭시 마지막재생위치부터 재생",
+          "by": "사용자",
+          "at": "2026-10-26T07:17:16.803Z"
+        },
+        {
+          "by": "claude",
+          "at": "2026-10-26T07:24:30.085Z",
+          "text": "조회 결과를 누르면 저장한 마지막 위치부터 재생하도록 하겠습니다. 다만 닫는 순간에만 비동기 저장하면 브라우저가 먼저 종료되어 누락될 수 있습니다. 제안은 재생 중 주기적으로 위치를 갱신하고, 일시정지·페이지 이동 시 마지막 저장을 추가하는 방식입니다. 닫기 직전만 저장할지 이 방식을 쓸지 먼저 논의하겠습니다."
+        },
+        {
+          "by": "claude",
+          "at": "2026-10-26T07:43:24.870Z",
+          "text": "재생 위치를 자동 저장하고 조회 화면에서 영상을 다시 열면 마지막 저장 위치부터 재생한다. 종료 시 누락을 줄이는 저장 이벤트와 주기는 claude가 구현·검증한다. 불필요하게 사용자 판단을 요청한 이전 질문은 철회합니다."
+        }
+      ],
+      "reviewAwaitingReply": false,
+      "reviewPacket": {
+        "summary": "재생 위치를 자동 저장하고 조회 화면에서 영상을 다시 열면 마지막 저장 위치부터 재생한다. 종료 시 누락을 줄이는 저장 이벤트와 주기는 claude가 구현·검증한다.",
+        "question": "결정된 동작입니다. 구현·검증은 claude가 진행합니다.",
+        "rows": [],
+        "remaining": [],
+        "steps": []
+      },
+      "conclusion": "마지막 위치를 저장하고 다시 열면 그 위치부터 재생한다.",
+      "decisionNeeded": false,
+      "decisionQuestion": "",
+      "nextAction": "주기적·정지·이동 저장으로 누락 방지 구현",
+      "decisionState": "결정됨",
+      "steps": [
+        {
+          "text": "재생 위치 URL 저장·복원 모듈 검사",
+          "status": "검토필요",
+          "owner": "claude"
+        },
+        {
+          "text": "재생중·정지·이동 때 위치 저장, 다시 열면 이어보기",
+          "status": "예정",
+          "owner": "claude"
+        }
+      ]
+    },
+    {
+      "id": "T14",
+      "topic": "UI 개발",
+      "title": "확장 아이콘으로 조회 오버레이 열기",
+      "status": "완료",
+      "priority": "높음",
+      "detail": "사용자가 로컬 설치를 완료했고 제공한 화면에서 조회 오버레이·사운드디자인 필터·2개 결과를 확인했다. 에이전트 직접 아이콘 실행, 설치환경의 태그 저장복원·닫기/Esc는 미검증이다. 실제 시청·북마크 연결은 별도 미완료.",
+      "acceptance": "열기·닫기·키보드 포커스와 기존 YouTube 재생 화면 복귀 검증.",
+      "depends": [
+        "T05"
+      ],
+      "evidence": ".logs/installed-overlay-review.json · .logs/installed-overlay-user-proof.png",
+      "owner": "같이",
+      "previousStatus": "진행",
+      "review": {
+        "example": "사용자가 로컬 설치를 완료했고 제공한 화면에서 조회 오버레이·사운드디자인 필터·2개 결과를 확인했다. 에이전트 직접 아이콘 실행, 설치환경의 태그 저장복원·닫기/Esc는 미검증이다. 실제 시청·북마크 연결은 별도 미완료.",
+        "artifacts": [
+          {
+            "path": ".logs/installed-overlay-user-proof.png",
+            "label": "사용자가 제공한 설치 화면"
+          }
+        ]
+      },
+      "reviewCanComplete": false,
+      "reviewComments": [
+        {
+          "text": "완료",
+          "by": "사용자",
+          "at": "2026-10-26T07:17:33.323Z"
+        },
+        {
+          "by": "claude",
+          "at": "2026-10-26T07:24:30.085Z",
+          "text": "완료라는 명시적 코멘트를 반영해 완료로 변경했습니다. 완료 범위는 설치 후 조회 오버레이 표시이며, 시청 기록과 실제 북마크 연결까지 완료했다는 뜻은 아닙니다."
+        }
+      ],
+      "reviewAwaitingReply": false,
+      "statusHistory": [
+        {
+          "from": "검토필요",
+          "to": "완료",
+          "by": "사용자 코멘트 반영",
+          "at": "2026-10-26T07:24:30.085Z"
+        }
+      ],
+      "reviewPacket": {
+        "summary": "완료라는 명시적 코멘트를 반영해 완료로 변경했습니다. 완료 범위는 설치 후 조회 오버레이 표시이며, 시청 기록과 실제 북마크 연결까지 완료했다는 뜻은 아닙니다.",
+        "question": "다음 변경은 아래 이슈별 쟁점을 논의한 뒤 결정하겠습니다.",
+        "rows": [],
+        "remaining": [],
+        "steps": []
+      },
+      "parentId": "T28",
+      "conclusion": "확장 아이콘으로 조회 화면을 열고 닫는다.",
+      "nextAction": "완료 범위 유지",
+      "decisionNeeded": false,
+      "decisionState": "결정됨",
+      "decisionQuestion": "",
+      "steps": [
+        {
+          "text": "확장 아이콘으로 조회 화면을 열고 닫는다.",
+          "status": "완료",
+          "owner": "같이"
+        },
+        {
+          "text": "완료 범위 유지",
+          "status": "완료",
+          "owner": "같이"
+        }
+      ]
+    },
+    {
+      "id": "T15",
+      "topic": "북마크·시청 기록",
+      "title": "보관 기능 유지 여부",
+      "status": "결정 필요",
+      "priority": "보통",
+      "detail": "반복 연습용 영상 보관을 논의했으나 이후 필요성 재검토. 제거가 확정되지는 않았다.",
+      "question": "별도 보관 체크와 메뉴를 유지할지, 사용자 태그로 충분한지?",
+      "owner": "사용자",
+      "reviewCanComplete": false,
+      "conclusion": "",
+      "nextAction": "보관 기능은 구현 전 사용자 결정",
+      "decisionNeeded": true,
+      "decisionState": "결정 필요",
+      "decisionQuestion": "상시 참고 영상을 보관 전용 메뉴로 분리할지, 사용자 태그로 처리할지",
+      "steps": [
+        {
+          "text": "반복 연습용 영상 보관을 논의했으나 이후 필요성 재검토. 제거가 확정되지는 않았다.",
+          "status": "결정됨",
+          "owner": "사용자"
+        },
+        {
+          "text": "보관 기능은 구현 전 사용자 결정",
+          "status": "결정 필요",
+          "owner": "사용자"
+        }
+      ]
+    },
+    {
+      "id": "T16",
+      "topic": "북마크·시청 기록",
+      "title": "특정 위치 마킹",
+      "status": "보류",
+      "priority": "낮음",
+      "detail": "일반 이어보기와 다른 이름 붙인 구간·위치 마킹. 기획 검토 후 결정한다.",
+      "owner": "claude",
+      "reviewCanComplete": false,
+      "conclusion": "특정 위치 마킹은 후순위다.",
+      "nextAction": "보류 유지",
+      "decisionNeeded": false,
+      "decisionState": "결정됨",
+      "decisionQuestion": "",
+      "steps": [
+        {
+          "text": "특정 위치 마킹은 후순위다.",
+          "status": "결정됨",
+          "owner": "claude"
+        },
+        {
+          "text": "보류 유지",
+          "status": "보류",
+          "owner": "claude"
+        }
+      ]
+    },
+    {
+      "id": "T17",
+      "topic": "커리큘럼·공유",
+      "title": "YouTube 재생목록을 커리큘럼 기본 단위로",
+      "status": "예정",
+      "priority": "높음",
+      "detail": "개인 학습과 공유 둘 다 지원. 영상·순서는 재생목록, 학습 정보는 확장이 보완한다. 독립 커리큘럼 자체가 금지라고 확정한 것은 아니다.",
+      "acceptance": "재생목록과 커리큘럼 정보 연결·공개 범위·수정 동작 정의.",
+      "owner": "claude",
+      "reviewCanComplete": false,
+      "conclusion": "커리큘럼은 YouTube 재생목록을 기본 단위로 한다.",
+      "nextAction": "편집 화면 이후 연결",
+      "decisionNeeded": false,
+      "decisionState": "결정됨",
+      "decisionQuestion": "",
+      "steps": [
+        {
+          "text": "커리큘럼은 YouTube 재생목록을 기본 단위로 한다.",
+          "status": "결정됨",
+          "owner": "claude"
+        },
+        {
+          "text": "편집 화면 이후 연결",
+          "status": "예정",
+          "owner": "claude"
+        }
+      ]
+    },
+    {
+      "id": "T18",
+      "topic": "UI 개발",
+      "title": "커리큘럼 편집기 프로토타입",
+      "status": "예정",
+      "priority": "보통",
+      "detail": "목표·대상·선수 지식, 단계별 영상 순서, 연습과 완료 기준 편집. 러프한 안은 시험할 가치가 있다는 피드백이며 최종 디자인 승인 아님. 로컬 편집 시안을 /curriculum에 구현. 영상·단계 추가 및 재정렬, 자동 저장·복원, 연습·완료 기준, 미리보기 브라우저 검증 완료. YouTube 재생목록 연동과 실제 공개는 미구현.",
+      "acceptance": "영상을 찾아 단계에 추가하고 순서 변경, 미리보기·저장 흐름 시험.",
+      "depends": [
+        "T17"
+      ],
+      "evidence": "prototypes/curriculum-editor.html · .logs/curriculum-editor-proof.png",
+      "owner": "claude",
+      "previousStatus": "완료",
+      "review": {
+        "example": "목표·대상·선수 지식, 단계별 영상 순서, 연습과 완료 기준 편집. 러프한 안은 시험할 가치가 있다는 피드백이며 최종 디자인 승인 아님. 로컬 편집 시안을 /curriculum에 구현. 영상·단계 추가 및 재정렬, 자동 저장·복원, 연습·완료 기준, 미리보기 브라우저 검증 완료. YouTube 재생목록 연동과 실제 공개는 미구현.",
+        "artifacts": [],
+        "url": "http://127.0.0.1:8770/curriculum"
+      },
+      "reviewCanComplete": true,
+      "reviewComments": [
+        {
+          "text": "예정으로",
+          "by": "사용자",
+          "at": "2026-10-26T07:18:03.356Z"
+        },
+        {
+          "by": "claude",
+          "at": "2026-10-26T07:24:30.085Z",
+          "text": "예정으로 변경했습니다. 기존 프로토타입은 참고 자료로 남기고, UI 개발의 커리큘럼 편집 화면으로 묶었습니다. 구현 완료나 디자인 승인으로 취급하지 않습니다."
+        }
+      ],
+      "reviewAwaitingReply": false,
+      "statusHistory": [
+        {
+          "from": "검토필요",
+          "to": "예정",
+          "by": "사용자 코멘트 반영",
+          "at": "2026-10-26T07:24:30.085Z"
+        }
+      ],
+      "reviewPacket": {
+        "summary": "예정으로 변경했습니다. 기존 프로토타입은 참고 자료로 남기고, UI 개발의 커리큘럼 편집 화면으로 묶었습니다. 구현 완료나 디자인 승인으로 취급하지 않습니다.",
+        "question": "다음 변경은 아래 이슈별 쟁점을 논의한 뒤 결정하겠습니다.",
+        "rows": [],
+        "remaining": [],
+        "steps": []
+      },
+      "parentId": "T28",
+      "conclusion": "YouTube 커리큘럼 편집 화면을 Figma에서 준비한다.",
+      "nextAction": "조회·태그 편집 화면 다음 진행",
+      "decisionNeeded": false,
+      "decisionState": "결정됨",
+      "decisionQuestion": "",
+      "steps": [
+        {
+          "text": "YouTube 커리큘럼 편집 화면을 Figma에서 준비한다.",
+          "status": "결정됨",
+          "owner": "claude"
+        },
+        {
+          "text": "조회·태그 편집 화면 다음 진행",
+          "status": "예정",
+          "owner": "claude"
+        }
+      ]
+    },
+    {
+      "id": "T19",
+      "topic": "UI 개발",
+      "title": "YouTube 화면에 학습 보조 영역 추가",
+      "status": "예정",
+      "priority": "높음",
+      "detail": "별도 학습 사이트·플레이어를 만들지 않는다. 기존 재생 페이지와 재생목록을 유지하고 이번 연습, 완료 체크, 내 메모를 작게 덧붙인다.",
+      "acceptance": "기존 YouTube 이용 흐름을 유지하면서 수업 정보 확인.",
+      "depends": [
+        "T18"
+      ],
+      "owner": "claude",
+      "reviewCanComplete": false,
+      "parentId": "T28",
+      "conclusion": "기존 YouTube 화면에 작은 학습 보조 영역을 더한다.",
+      "nextAction": "편집기 흐름 이후 시안 준비",
+      "decisionNeeded": false,
+      "decisionState": "결정됨",
+      "decisionQuestion": "",
+      "steps": [
+        {
+          "text": "기존 YouTube 화면에 작은 학습 보조 영역을 더한다.",
+          "status": "결정됨",
+          "owner": "claude"
+        },
+        {
+          "text": "편집기 흐름 이후 시안 준비",
+          "status": "예정",
+          "owner": "claude"
+        }
+      ]
+    },
+    {
+      "id": "T20",
+      "topic": "커리큘럼·공유",
+      "title": "시청완료와 연습 성취 분리",
+      "status": "예정",
+      "priority": "보통",
+      "detail": "영상 시청완료와 연습 완료를 따로 관리. 첫 시안은 완료 기준을 읽고 본인이 체크하는 방식이며 실제 운영 검토 필요.",
+      "acceptance": "시청완료 후에도 미완료 연습 표시. 학습자별 기록 저장 경계 확인.",
+      "depends": [
+        "T19"
+      ],
+      "owner": "claude",
+      "reviewCanComplete": false,
+      "conclusion": "시청완료와 연습 성취는 별도로 관리한다.",
+      "nextAction": "학습 화면 설계 후 연결",
+      "decisionNeeded": false,
+      "decisionState": "결정됨",
+      "decisionQuestion": "",
+      "steps": [
+        {
+          "text": "시청완료와 연습 성취는 별도로 관리한다.",
+          "status": "결정됨",
+          "owner": "claude"
+        },
+        {
+          "text": "학습 화면 설계 후 연결",
+          "status": "예정",
+          "owner": "claude"
+        }
+      ]
+    },
+    {
+      "id": "T21",
+      "topic": "커리큘럼·공유",
+      "title": "댓글 기반 질문·답변 운영 위치",
+      "status": "결정 필요",
+      "priority": "보통",
+      "detail": "댓글 활용은 사용자 제안. 영상별 댓글은 제작자에게 분산된다. 안내 영상 댓글을 공통 질문창으로 쓰는 안은 아직 미확정.",
+      "question": "차시 영상 댓글과 운영자 안내 영상 댓글 중 어디를 질문창으로 쓸지?",
+      "owner": "사용자",
+      "reviewCanComplete": false,
+      "conclusion": "",
+      "nextAction": "질문·답변 운영 위치 결정",
+      "decisionNeeded": true,
+      "decisionState": "결정 필요",
+      "decisionQuestion": "질문을 차시 영상 댓글에 둘지, 운영자 안내 영상 댓글에 모을지",
+      "steps": [
+        {
+          "text": "댓글 활용은 사용자 제안. 영상별 댓글은 제작자에게 분산된다. 안내 영상 댓글을 공통 질문창으로 쓰는 안은 아직 미확정.",
+          "status": "결정됨",
+          "owner": "사용자"
+        },
+        {
+          "text": "질문·답변 운영 위치 결정",
+          "status": "결정 필요",
+          "owner": "사용자"
+        }
+      ]
+    },
+    {
+      "id": "T22",
+      "topic": "커리큘럼·공유",
+      "title": "사용자 간 후원 방식 검토",
+      "status": "나중",
+      "priority": "낮음",
+      "detail": "영상 제작자와 커리큘럼 구성자 후원을 구분한다. 외부 후원 연결·수수료·결제 주체 등은 미정. 결제 구현 전 운영 방식을 검토.",
+      "owner": "같이",
+      "reviewCanComplete": false,
+      "conclusion": "후원 기능은 후순위다.",
+      "nextAction": "구현하지 않고 보류",
+      "decisionNeeded": false,
+      "decisionState": "결정됨",
+      "decisionQuestion": "",
+      "steps": [
+        {
+          "text": "후원 기능은 후순위다.",
+          "status": "결정됨",
+          "owner": "같이"
+        },
+        {
+          "text": "구현하지 않고 보류",
+          "status": "나중",
+          "owner": "같이"
+        }
+      ]
+    },
+    {
+      "id": "T23",
+      "topic": "출시",
+      "title": "확장 최소 권한·개인정보 고지 준비",
+      "status": "예정",
+      "priority": "높음",
+      "detail": "현재 코드 기준 데이터 처리 초안 작성. 로컬 태그 저장, 개인120표본 포함, 페이지권한과 미연결 API를 구분했다. 실제 설치·통신 검수, 삭제/내보내기, 운영자정보, 스토어 고지는 미완료.",
+      "acceptance": "구현된 권한과 외부 전송, 저장·삭제 설명이 실제 동작과 일치.",
+      "depends": [
+        "T11"
+      ],
+      "evidence": "PRIVACY-DRAFT.md",
+      "owner": "같이",
+      "previousStatus": "진행",
+      "review": {
+        "example": "현재 코드 기준 데이터 처리 초안 작성. 로컬 태그 저장, 개인120표본 포함, 페이지권한과 미연결 API를 구분했다. 실제 설치·통신 검수, 삭제/내보내기, 운영자정보, 스토어 고지는 미완료.",
+        "artifacts": [
+          {
+            "path": "PRIVACY-DRAFT.md",
+            "label": "데이터 처리 설명 초안"
+          }
+        ]
+      },
+      "reviewCanComplete": false,
+      "reviewComments": [
+        {
+          "text": "예정",
+          "by": "사용자",
+          "at": "2026-10-26T07:18:40.026Z"
+        },
+        {
+          "by": "claude",
+          "at": "2026-10-26T07:24:30.085Z",
+          "text": "예정으로 변경했습니다. 데이터 처리 설명 초안은 보존하고 실제 구현과 권한·통신이 확정된 후 고지 내용을 맞추겠습니다."
+        }
+      ],
+      "reviewAwaitingReply": false,
+      "statusHistory": [
+        {
+          "from": "검토필요",
+          "to": "예정",
+          "by": "사용자 코멘트 반영",
+          "at": "2026-10-26T07:24:30.085Z"
+        }
+      ],
+      "reviewPacket": {
+        "summary": "예정으로 변경했습니다. 데이터 처리 설명 초안은 보존하고 실제 구현과 권한·통신이 확정된 후 고지 내용을 맞추겠습니다.",
+        "question": "다음 변경은 아래 이슈별 쟁점을 논의한 뒤 결정하겠습니다.",
+        "rows": [],
+        "remaining": [],
+        "steps": []
+      },
+      "conclusion": "구현된 데이터 처리에 맞춰 권한과 고지를 준비한다.",
+      "nextAction": "실제 연결 범위 확정 후 검수",
+      "decisionNeeded": false,
+      "decisionState": "결정됨",
+      "decisionQuestion": "",
+      "steps": [
+        {
+          "text": "구현된 데이터 처리에 맞춰 권한과 고지를 준비한다.",
+          "status": "결정됨",
+          "owner": "같이"
+        },
+        {
+          "text": "실제 연결 범위 확정 후 검수",
+          "status": "예정",
+          "owner": "같이"
+        }
+      ]
+    },
+    {
+      "id": "T24",
+      "topic": "작업 관리",
+      "title": "로컬 할 일 표 운영",
+      "status": "검토필요",
+      "priority": "높음",
+      "detail": "이슈별 검토 드로워와 읽기 쉬운 결과표 제공. 원본 링크·Gemini 질문/복사·화면근거·검토완료 저장 포함. 첫 태그 이슈는 120건 최초/현재 태그 비교. 바깥 클릭/Esc 닫기 유지.",
+      "acceptance": "브라우저에서 필터·상세 보기 동작, 자료 변경 반영과 실행 기록 확인.",
+      "owner": "claude",
+      "previousStatus": "완료",
+      "review": {
+        "example": "이슈별 검토 드로워와 읽기 쉬운 결과표 제공. 원본 링크·Gemini 질문/복사·화면근거·검토완료 저장 포함. 첫 태그 이슈는 120건 최초/현재 태그 비교. 바깥 클릭/Esc 닫기 유지.",
+        "artifacts": []
+      },
+      "reviewCanComplete": true,
+      "reviewComments": [
+        {
+          "text": "현재 쓰고 있으나. 불편하네.\n의견 달라",
+          "by": "사용자",
+          "at": "2026-10-26T07:19:08.536Z"
+        },
+        {
+          "by": "claude",
+          "at": "2026-10-26T07:24:30.085Z",
+          "text": "제 의견은 표 자체를 버릴 필요는 없고, 표는 짧은 상태판으로 유지하는 것입니다. 불편의 원인은 반복 설명·개발 근거 노출·판단 질문의 부재였습니다. 상태는 셀에서 바로 바꾸고, 이슈를 열면 최신 답변과 필요한 결과만 먼저 보여주는 방향을 유지하겠습니다. 실시간 응답 연결은 mod 확인 전에는 완료했다고 하지 않겠습니다."
+        }
+      ],
+      "reviewAwaitingReply": false,
+      "reviewPacket": {
+        "summary": "제 의견은 표 자체를 버릴 필요는 없고, 표는 짧은 상태판으로 유지하는 것입니다. 불편의 원인은 반복 설명·개발 근거 노출·판단 질문의 부재였습니다. 상태는 셀에서 바로 바꾸고, 이슈를 열면 최신 답변과 필요한 결과만 먼저 보여주는 방향을 유지하겠습니다. 실시간 응답 연결은 mod 확인 전에는 완료했다고 하지 않겠습니다.",
+        "question": "우선 현재 표의 상태 선택기와 이슈별 답변 흐름을 사용하며 불편한 동작을 하나씩 고치겠습니다.",
+        "rows": [],
+        "remaining": [],
+        "steps": []
+      },
+      "conclusion": "대주제→단위업무의 간결한 표로 관리한다.",
+      "nextAction": "표의 동작 검증 후 제품 개발로 복귀",
+      "decisionNeeded": false,
+      "decisionState": "결정됨",
+      "decisionQuestion": "",
+      "steps": [
+        {
+          "text": "참고 할일.html의 CSS·8열·인라인 세부업무 구조로 교체",
+          "status": "검토필요",
+          "owner": "claude"
+        }
+      ]
+    },
+    {
+      "id": "T25",
+      "topic": "UI 개발",
+      "title": "조회 시 최소 정보만 표시",
+      "owner": "같이",
+      "status": "예정",
+      "priority": "높음",
+      "detail": "Figma 기존파일 옆에 최소정보 조회 초안 생성. 제목·시청상태·태그를 기본으로, 편집·추출근거는 상세로 옮기는 안. 상태 예시는 배치검토용이며 구현 미반영.",
+      "acceptance": "기본 화면에서 영상을 빠르게 구분하고 찾을 수 있으며 필요한 근거는 상세에서 확인할 수 있다.",
+      "depends": [
+        "T14"
+      ],
+      "evidence": "https://www.figma.com/design/KNnnVWd0aSaZD3PGrr7phS?node-id=39-29",
+      "review": {
+        "example": "제목·시청 상태·핵심 태그 중심 Figma 초안입니다. 검토완료는 시안 확인이며 확장 구현 완료가 아닙니다.",
+        "artifacts": [],
+        "url": "https://www.figma.com/design/KNnnVWd0aSaZD3PGrr7phS?node-id=39-29"
+      },
+      "reviewComments": [
+        {
+          "text": "figma 필요 (왠만하면 한페이지에서 모든 요소(창) 디자인",
+          "by": "사용자",
+          "at": "2026-10-26T06:09:02.497Z"
+        },
+        {
+          "by": "claude",
+          "at": "2026-10-26T06:16:57.767Z",
+          "text": "T02 사용자 의견: 최소정보 UI가 필요하고 현재 시안이 너무 개발 시안처럼 보임. 이 디자인 검토를 T25에 연결했습니다. 기존 Figma 초안은 최종 승인되지 않았습니다."
+        }
+      ],
+      "reviewedAt": "2026-10-26T06:09:02.497Z",
+      "reviewedBy": "사용자",
+      "reviewCanComplete": false,
+      "parentId": "T28",
+      "conclusion": "조회 기본 정보는 제목·시청 상태·태그로 줄인다.",
+      "nextAction": "Figma 시안을 다듬고 확장에 반영",
+      "decisionNeeded": false,
+      "decisionState": "결정됨",
+      "decisionQuestion": "",
+      "steps": [
+        {
+          "text": "최소정보 조회 시안 · 제목·상태·태그와 상세 정보 분리",
+          "status": "검토필요",
+          "owner": "claude"
+        },
+        {
+          "text": "제목 앞에 시청 상태 표시 · T10 합의 반영",
+          "status": "예정",
+          "owner": "claude",
+          "taskId": "T10"
+        },
+        {
+          "text": "확장 조회 화면에 적용하고 검색·닫기 동작 확인",
+          "status": "예정",
+          "owner": "claude"
+        }
+      ]
+    },
+    {
+      "id": "T26",
+      "topic": "추출·검색·분류",
+      "title": "태그 추출 성능 올리기",
+      "owner": "claude",
+      "status": "상시",
+      "priority": "높음",
+      "detail": "claude가 접근 가능한 모델의 추출 결과를 같은 자료로 비교하고 오류·검색 누락을 확인해 개선한다. 비교 자료 작성과 검증을 사용자에게 맡기지 않는다.",
+      "acceptance": "개선 회차마다 원본 링크·기존/변경 태그·제공 자료·검색어·오류·Gemini 확인 프롬프트를 표로 남긴다. 전체 업무는 상시 유지하며 개별 개선 결과를 검토필요로 올린다.",
+      "evidence": "TAG-QUALITY.md",
+      "review": {
+        "example": "현재는 초기 제목 기반 결과와 설명 보정본의 차이를 확인한 단계. 동일 입력 비교와 Jev 연결은 미완료.",
+        "artifacts": [
+          {
+            "path": "TAG-QUALITY.md",
+            "label": "태그 추출 개선 방법론"
+          }
+        ]
+      },
+      "reviewComments": [
+        {
+          "text": "검토업무후 바로 성능 올리기 토론 필요",
+          "by": "사용자",
+          "at": "2026-10-26T06:09:29.782Z"
+        },
+        {
+          "by": "claude",
+          "at": "2026-10-26T07:43:24.870Z",
+          "text": "claude가 접근 가능한 모델의 추출 결과를 같은 자료로 비교하고 오류·검색 누락을 확인해 개선한다. 비교 자료 작성과 검증을 사용자에게 맡기지 않는다. 불필요하게 사용자 판단을 요청한 이전 질문은 철회합니다."
+        }
+      ],
+      "reviewCanComplete": false,
+      "conclusion": "추출 고도화는 claude가 모델 비교·검색 검증을 수행한다.",
+      "decisionNeeded": false,
+      "decisionQuestion": "",
+      "reviewAwaitingReply": false,
+      "nextAction": "동일 공개 자료로 모델 응답을 비교하고 오류 정리",
+      "decisionState": "결정됨",
+      "steps": [
+        {
+          "text": "동일 영상 자료로 모델별 태그 추출 비교",
+          "status": "다음",
+          "owner": "claude"
+        },
+        {
+          "text": "한영 검색어로 누락·오분류 확인하고 개선 회차 기록",
+          "status": "예정",
+          "owner": "claude"
+        }
+      ]
+    },
+    {
+      "id": "T27",
+      "topic": "작업 관리",
+      "title": "이슈별 검토·자료 요청·대화 흐름 개선",
+      "status": "닫힘",
+      "owner": "같이",
+      "priority": "높음",
+      "reviewCanComplete": false,
+      "detail": "검토 방법에 집중. 확실한 자료는 미리 준비하고 불확실하면 필요한 자료를 먼저 질문한다. 미해결 코멘트를 읽고 이슈 이동·내용 교체·범위 조정을 논의하며 검토필요 유지. 자료 요청 버튼·입력란은 후속 구현. 실시간 채팅은 사용자 mod 스킬 확인 후 판단.",
+      "acceptance": "이슈마다 필요한 자료와 판단 질문이 다르고, 미해결 의견이 자동 완료되지 않는다. 자료 요청과 검토완료를 분리한다.",
+      "review": {
+        "example": "T01~T07 검토자료와 코멘트 답변 정리 중. 자료 요청 UI와 mod 연동은 아직 미완료.",
+        "artifacts": []
+      },
+      "reviewComments": [
+        {
+          "text": "코멘트 방식은 일단은 쓰겠는데\n상태변경 셀렉터를 만들면 좋겠다.",
+          "by": "사용자",
+          "at": "2026-10-26T07:20:21.153Z"
+        },
+        {
+          "by": "claude",
+          "at": "2026-10-26T07:24:30.085Z",
+          "text": "상태 변경 선택기를 각 행에 추가했습니다. 완료와 닫힘은 다르게 표시하고, 상태 변경 이력을 저장합니다. 코멘트는 계속 이슈에 남기되 미해결 의견은 검토필요를 유지합니다."
+        }
+      ],
+      "reviewAwaitingReply": false,
+      "reviewPacket": {
+        "summary": "상태 변경 선택기를 각 행에 추가했습니다. 완료와 닫힘은 다르게 표시하고, 상태 변경 이력을 저장합니다. 코멘트는 계속 이슈에 남기되 미해결 의견은 검토필요를 유지합니다.",
+        "question": "상태 셀에서 바로 변경할 수 있습니다. 코멘트를 남기는 것만으로 완료 처리하지 않습니다.",
+        "rows": [],
+        "remaining": [],
+        "steps": []
+      },
+      "conclusion": "이슈별 채팅 도입은 중단한다. 결정 논의는 이 대화에서 한다.",
+      "nextAction": "닫힘 처리, 기록 보존",
+      "decisionNeeded": false,
+      "decisionState": "결정됨",
+      "decisionQuestion": "",
+      "steps": [
+        {
+          "text": "이슈별 채팅 도입은 중단한다. 결정 논의는 이 대화에서 한다.",
+          "status": "닫힘",
+          "owner": "같이"
+        },
+        {
+          "text": "닫힘 처리, 기록 보존",
+          "status": "닫힘",
+          "owner": "같이"
+        }
+      ]
+    },
+    {
+      "id": "T28",
+      "topic": "UI 개발",
+      "title": "UI 개발 · 화면별 Figma 준비",
+      "status": "예정",
+      "owner": "claude",
+      "priority": "높음",
+      "detail": "조회, 영상 태그 생성·편집, 커리큘럼 편집, 학습 보조 화면을 하위 이슈로 관리한다. 각 화면은 사용자 흐름과 표시 정보를 따로 검토하고 Figma에서 준비한다.",
+      "acceptance": "사용자가 각 화면의 목적과 상태를 Figma에서 확인하고 수정할 수 있다.",
+      "reviewCanComplete": false,
+      "conclusion": "UI 개발은 조회·태그 편집·커리큘럼·학습 화면으로 나눈다.",
+      "nextAction": "조회 화면부터 순서대로 제작",
+      "decisionNeeded": false,
+      "decisionState": "결정됨",
+      "decisionQuestion": "",
+      "kind": "group",
+      "steps": [
+        {
+          "text": "UI 개발은 조회·태그 편집·커리큘럼·학습 화면으로 나눈다.",
+          "status": "결정됨",
+          "owner": "claude"
+        },
+        {
+          "text": "조회 화면부터 순서대로 제작",
+          "status": "예정",
+          "owner": "claude"
+        }
+      ]
+    }
+  ],
+  "reviewPolicy": {
+    "focus": "검토 방법과 판단 자료를 이슈별로 준비한다",
+    "unresolved": "미해결 의견은 다음 결정 논의 후에도 검토필요 유지",
+    "scopeChange": "이슈 이동·내용 교체·범위 변경은 사용자와 논의 후 반영",
+    "materials": "확신 있는 자료는 선제 준비. 불확실하면 필요한 자료를 먼저 질문",
+    "completion": "전체 범위를 확인한 뒤 사용자의 검토완료로만 완료",
+    "promptScope": "YouTube 영상의 추출 검증에만 프롬프트 제공",
+    "liveChat": "Claude mod 스킬 업로드 후 연동 검토. 현재는 코멘트 저장과 후속 답변 방식"
+  },
+  "nextTaskId": "T25",
+  "topicConclusions": {
+    "태그·검색": "검색 기능과 표본은 확보. 다음은 추출 품질 개선",
+    "분류·Jev": "공통 사전부터 구축, 중분류 판단은 별도 검증",
+    "UI 개발": "최소정보 조회 → 태그 편집 → 커리큘럼 → 학습 화면",
+    "시청·저장": "등록·완료·이어보기는 합의된 동작대로 구현",
+    "커리큘럼·커뮤니티": "YouTube 재생목록을 기반으로 단계적으로 구현",
+    "등록·정책": "실제 데이터 처리와 권한 확정 후 고지 검수",
+    "작업 관리": "표로 진행 상황을 보고 필요한 결정만 대화"
+  },
+  "boardGroups": [
+    {
+      "id": "G1",
+      "name": "UI 개발",
+      "taskIds": [
+        "T25",
+        "T09",
+        "T14",
+        "T18",
+        "T19",
+        "T28",
+        "T10"
+      ]
+    },
+    {
+      "id": "G2",
+      "name": "추출·검색·분류",
+      "taskIds": [
+        "T26",
+        "T03",
+        "T01",
+        "T04",
+        "T05",
+        "T06",
+        "T07",
+        "T08",
+        "T02"
+      ]
+    },
+    {
+      "id": "G3",
+      "name": "북마크·시청 기록",
+      "taskIds": [
+        "T11",
+        "T12",
+        "T13",
+        "T15",
+        "T16"
+      ]
+    },
+    {
+      "id": "G4",
+      "name": "커리큘럼·공유",
+      "taskIds": [
+        "T17",
+        "T20",
+        "T21",
+        "T22"
+      ]
+    },
+    {
+      "id": "G5",
+      "name": "출시",
+      "taskIds": [
+        "T23"
+      ]
+    },
+    {
+      "id": "G6",
+      "name": "작업 관리",
+      "taskIds": [
+        "T24",
+        "T27"
+      ]
+    }
+  ]
+}

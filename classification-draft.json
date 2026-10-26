@@ -1,0 +1,327 @@
+{
+  "version": 1,
+  "status": "draft-not-approved",
+  "policy": {
+    "topLevel": "서버에서 검토한 대표 키워드 관리. 빈도로 자동 승격하지 않음",
+    "lowerLevel": "개인 후보와 결과는 로컬 저장 구상. Jev 추론은 공식 호스팅 API 방식 확인, 오프라인 실행 미확인",
+    "ui": "트리 없이 대분류 필터와 하위 태그 후보를 표시",
+    "storage": "개인 북마크와 시청 기록은 공통 분류 사전과 분리"
+  },
+  "prototypeCategories": [
+    {
+      "id": "tab",
+      "name": "TAB",
+      "terms": [
+        "TAB",
+        "타브악보"
+      ]
+    },
+    {
+      "id": "composition",
+      "name": "작곡",
+      "terms": [
+        "작곡",
+        "편곡",
+        "비트메이킹",
+        "샘플링",
+        "멜로디",
+        "코드 진행",
+        "음악 프로듀싱",
+        "에이블톤",
+        "로직프로",
+        "FL 스튜디오",
+        "FL Studio",
+        "DAW"
+      ]
+    },
+    {
+      "id": "sound",
+      "name": "사운드디자인",
+      "terms": [
+        "사운드 디자인",
+        "신디",
+        "오디오 플러그인",
+        "채널 스트립"
+      ]
+    },
+    {
+      "id": "theory",
+      "name": "음악이론",
+      "terms": [
+        "음악이론",
+        "경과화음",
+        "청음",
+        "화음",
+        "선법",
+        "하모니",
+        "곡 구조"
+      ]
+    },
+    {
+      "id": "ai",
+      "name": "AI 활용",
+      "terms": [
+        "AI",
+        "인공지능",
+        "딥러닝",
+        "머신러닝",
+        "Deep Learning",
+        "Machine Learning",
+        "GPT",
+        "DeepSeek",
+        "클로드",
+        "Claude",
+        "MCP",
+        "에이전트 스킬",
+        "클로드 스킬",
+        "SKILL.md",
+        "taste skill",
+        "pstack",
+        "Jev",
+        "하네스",
+        "LLM",
+        "RAG",
+        "GraphRAG",
+        "Gemini",
+        "노트북LM",
+        "챗GPT"
+      ]
+    },
+    {
+      "id": "code",
+      "name": "프로그래밍",
+      "terms": [
+        "개발",
+        "코딩",
+        "HTML",
+        "CSS",
+        "리액트",
+        "useState",
+        "도커",
+        "TypeScript",
+        "Next.js",
+        "CLI",
+        "MSA",
+        "트랜잭션"
+      ]
+    },
+    {
+      "id": "design",
+      "name": "디자인",
+      "terms": [
+        "피그마",
+        "웹디자인",
+        "웹 디자인",
+        "모션그래픽",
+        "디자이너",
+        "프로토타이핑",
+        "UIUX"
+      ]
+    },
+    {
+      "id": "cooking",
+      "name": "요리",
+      "terms": [
+        "요리",
+        "레시피",
+        "카레",
+        "소스 만들기",
+        "토마토 소스",
+        "크림 소스",
+        "sauce",
+        "고기",
+        "샌드위치",
+        "쇼가야키",
+        "해동"
+      ]
+    },
+    {
+      "id": "food",
+      "name": "맛집",
+      "terms": [
+        "맛집",
+        "뷔페",
+        "카페",
+        "다이닝",
+        "식품 리뷰"
+      ]
+    }
+  ],
+  "candidatesWithoutBookmarks": [
+    {
+      "id": "natural-science",
+      "name": "자연과학",
+      "examples": [
+        "물리학",
+        "화학",
+        "생물학",
+        "지구과학",
+        "천문학"
+      ]
+    },
+    {
+      "id": "humanities",
+      "name": "인문",
+      "examples": [
+        "철학",
+        "역사",
+        "문학",
+        "언어학"
+      ]
+    },
+    {
+      "id": "social-science",
+      "name": "사회과학",
+      "examples": [
+        "심리학",
+        "사회학",
+        "경제학",
+        "정치학"
+      ]
+    }
+  ],
+  "aliasGroups": [
+    [
+      "베이스",
+      "bass"
+    ],
+    [
+      "베이스 패턴",
+      "bass pattern",
+      "bass patterns"
+    ],
+    [
+      "사운드 디자인",
+      "sound design"
+    ],
+    [
+      "에이블톤",
+      "Ableton",
+      "Ableton Live",
+      "에이블톤 라이브"
+    ],
+    [
+      "피아노",
+      "piano"
+    ],
+    [
+      "핑거스타일",
+      "fingerstyle"
+    ],
+    [
+      "재즈",
+      "jazz"
+    ],
+    [
+      "컨트리",
+      "country"
+    ],
+    [
+      "네오소울",
+      "neo soul",
+      "neosoul"
+    ],
+    [
+      "타브악보",
+      "TAB",
+      "tabs",
+      "tablature"
+    ],
+    [
+      "작곡",
+      "composition",
+      "songwriting"
+    ],
+    [
+      "음악이론",
+      "music theory"
+    ],
+    [
+      "코드 진행",
+      "chord progression"
+    ],
+    [
+      "청음",
+      "ear training"
+    ],
+    [
+      "샘플링",
+      "sampling"
+    ],
+    [
+      "편곡",
+      "arrangement"
+    ],
+    [
+      "딥러닝",
+      "deep learning"
+    ],
+    [
+      "머신러닝",
+      "machine learning"
+    ],
+    [
+      "클로드 코드",
+      "Claude Code"
+    ],
+    [
+      "스킬",
+      "skills",
+      "skill"
+    ],
+    [
+      "에이전트 스킬",
+      "agent skills"
+    ],
+    [
+      "하네스",
+      "harness",
+      "hanness"
+    ],
+    [
+      "피그마",
+      "Figma"
+    ],
+    [
+      "로직프로",
+      "Logic Pro"
+    ],
+    [
+      "노트북LM",
+      "NotebookLM"
+    ],
+    [
+      "타입스크립트",
+      "TypeScript"
+    ],
+    [
+      "리액트",
+      "React"
+    ],
+    [
+      "자바스크립트",
+      "JavaScript"
+    ],
+    [
+      "도커",
+      "Docker"
+    ]
+  ],
+  "aliasSource": "로컬 수동 검증용 초기 사전. Gemini 자동 번역 파이프라인 미연동",
+  "reviewCases": [
+    {
+      "tag": "소스 코드",
+      "category": "cooking",
+      "expected": false,
+      "status": "literal-rule-verified",
+      "reason": "중의적인 단독 소스를 요리 분류 근거에서 제외. 요리 문맥 복합어만 초기 사전에 포함."
+    },
+    {
+      "tag": "소스",
+      "category": "cooking",
+      "expected": null,
+      "status": "ambiguous-not-classified",
+      "reason": "문맥 없이 강제 분류하지 않음. 실제 의미 분류는 미구현."
+    }
+  ]
+}

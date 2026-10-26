@@ -1,0 +1,99 @@
+<!doctype html><html lang="ko"><head><title>YouTube 할 일</title><meta name="viewport" content="width=device-width, initial-scale=1"><meta charset="utf-8"><meta name="color-scheme" content="light only"><style>
+/* 레이아웃: 표 한 장, 대주제가 접히는 묶음. 줄 높이 고정 · 칸 잘림 — 한눈에 많이 */
+:root { color-scheme:light only; --bg:#ffffff; --fg:#37352f; --muted:#787774; --faint:#acaba9; --line:#e9e9e7; --hover:#f7f7f5; --head:#fbfbfa; --code:#f1f1ef;
+  --g-bg:#dbeddb; --g-fg:#1c3829; --b-bg:#d3e5ef; --b-fg:#183347; --y-bg:#fdecc8; --y-fg:#402c1b; --r-bg:#ffe2dd; --r-fg:#5d1715; --n-bg:#e3e2e0; --n-fg:#32302c; --p-bg:#e8deee; --p-fg:#412454;
+  --sans:-apple-system, BlinkMacSystemFont, "Segoe UI", "Apple SD Gothic Neo", sans-serif; --mono:ui-monospace, SFMono-Regular, Menlo, monospace; }
+body { background:var(--bg); color:var(--fg); font:11.5px/1.3 var(--sans); margin:0; padding-block:12px 30px; padding-left:max(16px, env(safe-area-inset-left, 0px)); padding-right:max(16px, env(safe-area-inset-right, 0px)) }
+h1 { font-size:16px; margin:0 8px 0 0; font-weight:700; display:inline }
+.sum { color:var(--muted); font-size:11px; display:inline }
+.bar { display:flex; flex-wrap:wrap; gap:2px; margin:6px 0 4px; border-bottom:1px solid var(--line) }
+.tab { font:inherit; font-size:11.5px; color:var(--muted); background:none; border:0; border-bottom:2px solid transparent; padding:3px 8px; cursor:pointer }
+.tab[aria-pressed="true"] { color:var(--fg); border-bottom-color:var(--fg) }
+.wrap { overflow-x:auto }
+table { border-collapse:collapse; table-layout:fixed }
+col.c-iss { width:290px } col.c-st { width:110px } col.c-who { width:64px } col.c-pr { width:64px } col.c-pre { width:130px } col.c-prob { width:260px } col.c-desc { width:420px } col.c-doc { width:150px }
+/* 칸 너비 조정 — 머리칸 오른쪽 끝을 끈다 (엑셀처럼). 두 번 누르면 기본값 */
+th { position:relative }
+.rz { position:absolute; top:0; right:-3px; width:7px; height:100%; cursor:col-resize; z-index:2 }
+.rz:hover, .rz.drag { background:var(--b-bg) }
+th { position:sticky; top:0; background:var(--head); color:var(--muted); font-weight:400; font-size:11px; text-align:left; padding:3px 6px; border-bottom:1px solid var(--line); border-right:1px solid var(--line); white-space:nowrap }
+td { padding:0 6px; height:22px; border-bottom:1px solid var(--line); border-right:1px solid var(--line); vertical-align:middle }
+th:last-child, td:last-child { border-right:0 }
+tr.r:hover td { background:var(--hover) }
+tr.r.has { cursor:pointer }
+.num { font-family:var(--mono); font-size:10px; color:var(--faint); margin-right:5px; flex:none }
+.caret { color:var(--muted); font-size:9px; width:10px; flex:none; visibility:hidden } tr.r.has .caret { visibility:visible }
+tr.r[aria-expanded="true"] .caret { transform:rotate(90deg) }
+
+.clip { white-space:nowrap; overflow:hidden; text-overflow:ellipsis }
+td.iss { display:flex; align-items:center; gap:2px; height:22px; box-sizing:border-box }
+td.iss .clip { font-weight:500 }
+.muted { color:var(--muted) }
+.prob .clip { color:var(--r-fg) }
+.pill { display:inline-block; padding:0 6px; border-radius:8px; font-size:10.5px; line-height:15px; white-space:nowrap }
+.st-doing { background:var(--b-bg); color:var(--b-fg) } .st-review { background:var(--y-bg); color:var(--y-fg) } .st-todo { background:var(--p-bg); color:var(--p-fg) }
+.st-always { background:var(--g-bg); color:var(--g-fg) } .st-later, .st-drop { background:var(--n-bg); color:var(--n-fg) } .st-done { background:var(--g-bg); color:var(--g-fg) } .st-blocked { background:var(--r-bg); color:var(--r-fg) }
+.st-doing::before, .st-review::before { content:"● "; font-size:9px; vertical-align:1px }
+.who-claude { background:var(--code); color:var(--fg); border:1px solid var(--line) } .who-user { background:var(--fg); color:var(--bg) } .who-both { background:none; color:var(--muted); border:1px dashed var(--faint) }
+.sep { width:1px; background:var(--line); margin:4px 6px }
+.pr-높음 { background:var(--r-bg); color:var(--r-fg) } .pr-보통 { background:var(--y-bg); color:var(--y-fg) } .pr-낮음 { background:var(--g-bg); color:var(--g-fg) }
+.tag { display:inline-block; background:var(--code); border-radius:3px; padding:0 4px; margin-right:3px; font-size:10.5px; color:var(--muted) }
+code { font-family:var(--mono); font-size:.9em; background:var(--code); padding:0 3px; border-radius:3px }
+a { color:inherit; text-decoration:underline; text-decoration-color:var(--faint) }
+button.fold { background:none; border:0; color:var(--muted); cursor:pointer; padding:0 1px; font-size:10px; width:13px }
+tr.gh td { height:24px; border-right:0; padding-top:4px }
+tr.gh b { font-size:12px } .n { color:var(--faint); margin:0 6px 0 4px } .hint { color:var(--faint); font-size:10.5px }
+tr.gf td { height:16px; color:var(--muted); font-size:10px; border-right:0 }
+.cap { font-size:9px; letter-spacing:.08em; color:var(--faint) }
+tr.detail td { background:var(--hover); padding:6px 8px 8px 30px; height:auto }
+tr.detail ol { margin:0; padding-left:0; list-style:none; color:var(--muted); font-size:11px; line-height:1.6 }
+/* 남은 단계(진행 · 다음 · 남음 · 할 일)만 색을 달리 — 끝난 단계는 흐리게 그대로 */
+tr.detail li.todo { color:var(--b-fg); font-weight:600 }
+tr.detail li.todo .num { color:var(--b-fg) }
+tbody.closed tr.r, tbody.closed tr.detail, tbody.closed tr.gf { display:none }
+button:focus-visible, a:focus-visible, tr.r:focus-visible { outline:2px solid var(--b-fg); outline-offset:1px }
+
+.row-state{font-family:inherit;max-width:100%;border:0;cursor:pointer;padding:0 4px}.rz{touch-action:none}.settled{font-size:10px;color:#6a7e6f;margin-right:4px}.next-summary{margin:5px 0 4px}.tools{display:flex;gap:8px;align-items:center;margin:4px 0 6px}.tools input,.tools button{font:inherit;background:#fff;color:#555;border:1px solid #ddd;border-radius:3px;padding:3px 7px}.tools input{width:180px}#error{color:#922}.next-action{margin-top:4px;font-weight:400;color:#777}th{overflow:visible}.wrap{width:100%}
+</style></head><body><h1>YouTube 할 일</h1><span class="sum" id="summary"></span><div class="hint next-summary" id="next"></div><div class="bar" id="filters"></div><div class="tools"><input id="search" aria-label="업무 검색" placeholder="번호 · 업무 검색"><button id="refresh">새로고침</button><span id="error" role="status"></span></div><div class="wrap"><table><colgroup><col class="c-iss"><col class="c-st"><col class="c-who"><col class="c-pr"><col class="c-pre"><col class="c-prob"><col class="c-desc"><col class="c-doc"></colgroup><thead><tr><th class="iss">Aa 이슈</th><th>◌ 상태</th><th>◉ 담당</th><th>◎ 우선순위</th><th>⊖ 선행 작업</th><th>! 결정 필요</th><th>≡ 결론 · 설명</th><th>▤ 문서</th></tr></thead></table></div><script>let data,last='',filter='열린 것',query='';
+const openIssues=new Set(),closedGroups=new Set();
+const states=['진행','다음','검토필요','결정 필요','예정','상시','보류','나중','완료','닫힘'];
+const filters=['열린 것',...states,'담당 claude','담당 사용자','담당 같이','전부'];
+const rank=Object.fromEntries(states.map((s,i)=>[s,i]));
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const statusClass=s=>({'진행':'doing','다음':'todo','검토필요':'review','결정 필요':'blocked','예정':'todo','상시':'always','보류':'later','나중':'later','완료':'done','닫힘':'drop','결정됨':'done'}[s]||'later');
+const pill=s=>`<span class="pill st-${statusClass(s)}">${esc(s)}</span>`;
+const who=s=>`<span class="pill who-${s==='사용자'?'user':s==='같이'?'both':'claude'}">${esc(s)}</span>`;
+function matchesFilter(t){const open=!['완료','닫힘'].includes(t.status);return (filter==='전부'||filter==='열린 것'&&open||filter.startsWith('담당 ')&&open&&t.owner===filter.slice(3)||filter===t.status)&&[t.id,t.title,t.conclusion,t.nextAction].join(' ').toLowerCase().includes(query);}
+function render(){
+ document.querySelector('#filters').innerHTML=filters.map(f=>`<button class="tab" data-f="${f}" aria-pressed="${f===filter}">${f}</button>`).join('');document.querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{filter=b.dataset.f;render();});
+ const units=data.tasks.filter(t=>!['group','step'].includes(t.kind));
+ document.querySelector('#summary').textContent=states.map(s=>s+' '+units.filter(t=>t.status===s).length).filter(s=>!s.endsWith(' 0')).join(' · ');
+ const next=data.tasks.find(t=>t.id===data.nextTaskId);document.querySelector('#next').textContent=next?'다음: '+next.id+' '+next.title+' — '+(next.nextAction||''):'';
+ const table=document.querySelector('table');table.querySelectorAll('tbody').forEach(g=>g.remove());
+ for(const [gi,group]of data.boardGroups.entries()){
+  const all=group.taskIds.map(id=>data.tasks.find(t=>t.id===id)).filter(t=>t&&!['group','step'].includes(t.kind));
+  const ordinal=new Map(all.map((t,i)=>[t.id,`${gi+1}.${i+1}`]));
+  const items=all.filter(matchesFilter).sort((a,b)=>(rank[a.status]??99)-(rank[b.status]??99)||({'높음':0,'보통':1,'낮음':2}[a.priority]??2)-({'높음':0,'보통':1,'낮음':2}[b.priority]??2));if(!items.length)continue;
+  const body=document.createElement('tbody');body.className='g'+(closedGroups.has(group.id)?' closed':'');
+  const heading=document.createElement('tr');heading.className='gh';heading.innerHTML=`<td colspan="8"><button class="fold" aria-expanded="${!closedGroups.has(group.id)}">${closedGroups.has(group.id)?'▸':'▾'}</button> <span class="num">${gi+1}</span> <b>${esc(group.name)}</b> <span class="n">${all.length}</span></td>`;heading.querySelector('button').onclick=()=>{closedGroups.has(group.id)?closedGroups.delete(group.id):closedGroups.add(group.id);render();};body.append(heading);
+  for(const t of items){
+   const number=ordinal.get(t.id),expanded=openIssues.has(t.id),tr=document.createElement('tr');tr.className='r has';tr.id=t.id;tr.tabIndex=0;tr.setAttribute('aria-expanded',expanded);
+   const pending=t.decisionNeeded?'결정 필요 · '+(t.decisionQuestion||''):'';
+   const documentLink=['T01','T03'].includes(t.id)?`<a class="tag" href="/review-table?id=${t.id}" target="_blank" rel="noopener">영상 태그 비교</a>`:t.review?.url?`<a class="tag" href="${esc(t.review.url)}" target="_blank" rel="noopener">${t.review.url.includes('figma.com')?'Figma':'결과 화면'}</a>`:'';
+   tr.innerHTML=`<td class="iss"><span class="caret">▸</span><span class="num">${number}</span><div class="clip" title="${esc(t.id+' '+t.title)}">${esc(t.title)}</div></td><td><select class="row-state pill st-${statusClass(t.status)}" aria-label="${esc(t.id)} 상태">${states.map(s=>`<option ${s===t.status?'selected':''}>${s}</option>`).join('')}</select></td><td>${who(t.owner)}</td><td><span class="pill pr-${esc(t.priority)}">${esc(t.priority)}</span></td><td class="muted"><div class="clip">${esc((t.depends||[]).join(' · '))}</div></td><td class="prob" title="${esc(pending)}"><div class="clip">${esc(pending)}</div></td><td class="muted" title="${esc(t.conclusion||t.detail)}"><div class="clip">${!t.decisionNeeded?'<span class="settled">결정됨'+'</span> ':''}${esc(t.conclusion||t.detail)}</div></td><td><div class="clip">${documentLink}</div></td>`;
+   const detail=document.createElement('tr');detail.className='detail';detail.hidden=!expanded;
+   const steps=t.steps||[];detail.innerHTML=`<td colspan="8"><ol>${steps.map((s,i)=>`<li class="${!['완료','닫힘','결정됨'].includes(s.status)?'todo':''}"><span class="num">${number}.${i+1}</span>${pill(s.status)} ${who(s.owner||t.owner)} ${esc(s.text)}</li>`).join('')}<li class="next-action"><span class="num">${esc(t.id)}</span> 다음 · ${esc(t.nextAction||'추가 작업 없음')}</li></ol></td>`;
+   const toggle=()=>{expanded?openIssues.delete(t.id):openIssues.add(t.id);render();};tr.onclick=e=>{if(e.target.closest('a,select,option')||String(getSelection()))return;toggle();};tr.onkeydown=e=>{if(e.target.tagName==='SELECT')return;if(['Enter',' '].includes(e.key)){e.preventDefault();toggle();}};
+   tr.querySelector('select').onchange=async e=>{const status=e.target.value;if(status==='완료'&&!confirm(t.id+' 전체 범위를 완료로 변경할까요?')){e.target.value=t.status;return;}e.target.disabled=true;try{const r=await fetch('/task-status',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:t.id,expected:JSON.stringify(t),status,confirmedComplete:status==='완료'})});if(!r.ok)throw Error(await r.text());await load();}catch(error){document.querySelector('#error').textContent=error.message;e.target.disabled=false;e.target.value=t.status;}};body.append(tr,detail);
+  }
+  const footer=document.createElement('tr');footer.className='gf';footer.innerHTML=`<td></td><td colspan="7"><span class="cap">COMPLETE</span> ${all.filter(t=>['완료','닫힘'].includes(t.status)).length}/${all.length}</td>`;body.append(footer);table.append(body);
+ }
+}
+async function load(){try{const response=await fetch('/tasks.json',{cache:'no-store'});if(!response.ok)throw Error('업무를 읽지 못했습니다');const text=await response.text();if(text!==last){data=JSON.parse(text);last=text;render();}document.querySelector('#error').textContent='';}catch(e){document.querySelector('#error').textContent=e.message;}}
+document.querySelector('#search').oninput=e=>{query=e.target.value.toLowerCase();if(data)render();};document.querySelector('#refresh').onclick=load;
+const cols=[...document.querySelectorAll('col')],base=[290,110,64,64,100,260,420,130],key='youtube.reference-widths.v1';let widths=base.slice();try{const w=JSON.parse(localStorage.getItem(key));if(Array.isArray(w)&&w.length===8&&w.every(x=>Number.isFinite(x)&&x>=40&&x<=1500))widths=w;}catch{}
+function applyWidths(){const flex=[0,5,6],fixed=widths.reduce((s,w,i)=>s+(flex.includes(i)?0:w),0),available=Math.max(document.querySelector('.wrap').clientWidth,fixed+650),weight=flex.reduce((s,i)=>s+widths[i],0);cols.forEach((c,i)=>c.style.width=(flex.includes(i)?(available-fixed)*widths[i]/weight:widths[i])+'px');document.querySelector('table').style.width=available+'px';}
+new ResizeObserver(applyWidths).observe(document.querySelector('.wrap'));applyWidths();
+document.querySelectorAll('thead th').forEach((th,i)=>{const h=document.createElement('div');h.className='rz';h.title='끌어서 너비 조정 · 두 번 누르면 기본';th.append(h);h.onpointerdown=e=>{e.preventDefault();const start=e.clientX,initial=widths[i];h.setPointerCapture(e.pointerId);h.onpointermove=ev=>{widths[i]=Math.max(40,Math.min(1500,initial+ev.clientX-start));applyWidths();};h.onpointerup=()=>{h.onpointermove=null;try{localStorage.setItem(key,JSON.stringify(widths));}catch{}};h.onpointercancel=h.onpointerup;};h.ondblclick=()=>{widths[i]=base[i];applyWidths();try{localStorage.setItem(key,JSON.stringify(widths));}catch{}};});
+load();setInterval(load,5000);
+</script></body></html>

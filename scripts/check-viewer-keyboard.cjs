@@ -1,0 +1,13 @@
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const vm=require('node:vm');
+let focused=false,handler,nested=false,sent=[];
+const context={document:{getElementById:()=>({focus(){focused=true;}}),querySelector:()=>nested?{}:null,addEventListener:(type,fn)=>{handler=fn;}},chrome:{runtime:{sendMessage:message=>{sent.push(message);return Promise.resolve();}}},console};
+vm.createContext(context);vm.runInContext(fs.readFileSync('prototypes/extension-viewer.js','utf8'),context);
+assert(focused);
+handler({key:'x'});assert.equal(sent.length,0);
+nested=true;handler({key:'Escape'});assert.equal(sent.length,0);
+nested=false;handler({key:'Escape'});assert.equal(sent.length,1);
+assert.equal(sent[0].type,'close-bookmark-overlay');
+delete context.chrome;handler({key:'Escape'});assert.equal(sent.length,1);
+console.log('Passed initial search focus, nested-dialog Escape isolation and extension message guard.');

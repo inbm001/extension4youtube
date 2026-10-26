@@ -1,0 +1,23 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
+const data=JSON.parse(fs.readFileSync('tasks.json','utf8'));
+function element(){return {children:[],innerHTML:'',className:'',append(...nodes){for(const n of nodes){n.parent=this;this.children.push(n);}},remove(){this.parent.children=this.parent.children.filter(x=>x!==this);},setAttribute(k,v){this[k]=v;},querySelector(selector){this.controls=this.controls||{};return this.controls[selector]||(this.controls[selector]=element());},querySelectorAll(){return this.children.slice();}};}
+const table=element(),nodes=new Map();
+const context={document:{querySelector:s=>s==='table'?table:nodes.has(s)?nodes.get(s):(nodes.set(s,element()),nodes.get(s)),querySelectorAll:()=>[],createElement:element},getSelection:()=>'',console};
+vm.createContext(context);
+const code=fs.readFileSync('tasks-ui.js','utf8');vm.runInContext(code.slice(0,code.indexOf('async function load')),context);
+vm.runInContext('data='+JSON.stringify(data)+';render();',context);
+assert.equal(table.children.length,data.boardGroups.length);
+const first=table.children[0],issues=first.children.filter(x=>x.className==='r has');
+assert(issues.length>0);assert(first.children.filter(x=>x.className==='detail').every(x=>x.hidden));
+const id=issues[0].id;issues[0].onclick({target:{closest:()=>null}});
+let group=table.children[0];let index=group.children.findIndex(x=>x.id===id);
+assert.equal(group.children[index+1].hidden,false,'issue opens inline detail');
+assert(group.children[index+1].innerHTML.includes('<ol>'));
+assert(/\d+\.\d+\.\d+/.test(group.children[index+1].innerHTML),'third-depth numbering');
+group.children[index].onclick({target:{closest:()=>null}});group=table.children[0];index=group.children.findIndex(x=>x.id===id);assert.equal(group.children[index+1].hidden,true);
+group.children[0].querySelector('button').onclick();assert(table.children[0].className.includes('closed'));
+vm.runInContext("filter='완료';render();",context);for(const g of table.children)for(const row of g.children.filter(x=>x.className==='r has'))assert.equal(data.tasks.find(t=>t.id===row.id).status,'완료');
+const groups=data.boardGroups.flatMap(g=>g.taskIds);assert.equal(groups.length,new Set(groups).size);assert.deepEqual([...groups].sort(),data.tasks.map(t=>t.id).sort());
+const reference=fs.readFileSync('.logs/reference-harmoniq-todo.html','utf8').match(/<style>([\s\S]*?)<\/style>/)[1];assert(fs.readFileSync('tasks.css','utf8').startsWith(reference),'reference CSS retained verbatim');
+assert(!fs.readFileSync('tasks.html','utf8').includes('의견 보내기'));
+console.log('Passed reference CSS, complete task mapping, inline expand/collapse, third-depth numbering, group fold and status filter. Mocked DOM, not browser visual inspection.');
